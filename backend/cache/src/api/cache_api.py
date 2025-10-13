@@ -49,7 +49,7 @@ class CacheAPI:
         self.operation_history: List[CacheOperation] = []
         self.max_history = 1000
         
-        print("✅ Cache API initialized with validation and logging")
+        print("Cache API initialized with validation and logging")
     
     def _log_operation(self, operation: str, key: str, level: str, 
                        success: bool, duration: float, error: str = None):

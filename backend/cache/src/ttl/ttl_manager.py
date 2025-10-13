@@ -21,7 +21,7 @@ class TTLManager:
         self.running = False
         self.lock = threading.RLock()
         
-        print(f"✅ TTL Manager initialized with {config.cleanup_interval}s cleanup interval")
+        print(f"TTL Manager initialized with {config.cleanup_interval}s cleanup interval")
     
     def set_ttl(self, key: str, ttl: int, level: str = "auto"):
         """
@@ -149,14 +149,14 @@ class TTLManager:
                 name="TTLCleanupThread"
             )
             self.cleanup_thread.start()
-            print(f"✅ TTL cleanup thread started (interval: {self.config.cleanup_interval}s)")
+            print(f"TTL cleanup thread started (interval: {self.config.cleanup_interval}s)")
     
     def stop_cleanup_thread(self):
         """Stop background cleanup thread."""
         self.running = False
         if self.cleanup_thread and self.cleanup_thread.is_alive():
             self.cleanup_thread.join(timeout=5)
-            print("✅ TTL cleanup thread stopped")
+            print("TTL cleanup thread stopped")
     
     def _cleanup_loop(self):
         """Background cleanup loop for expired entries."""
@@ -166,14 +166,14 @@ class TTLManager:
                 expired_keys = self.get_expired_keys()
                 
                 if expired_keys:
-                    print(f"🧹 TTL cleanup: removing {len(expired_keys)} expired keys")
+                    print(f"TTL cleanup: removing {len(expired_keys)} expired keys")
                     # Note: Actual removal is handled by the cache when it checks TTL
                 
                 # Sleep until next cleanup
                 time.sleep(self.config.cleanup_interval)
                 
             except Exception as e:
-                print(f"❌ TTL cleanup error: {e}")
+                print(f"TTL cleanup error: {e}")
                 time.sleep(1)  # Short sleep on error
     
     def get_stats(self) -> dict:

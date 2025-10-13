@@ -52,7 +52,7 @@ class CacheConfig:
     
     # Performance settings
     cleanup_interval: int = 60  # 1 minute
-    similarity_threshold: float = 0.85
+    similarity_threshold: float = 0.75  # Higher threshold for better quality matches
     
     # Persistence settings
     persistence_enabled: bool = True
@@ -208,7 +208,7 @@ PRODUCTION_CONFIG = CacheConfig(
     memory_limit="10%",
     ttl_enabled=True,
     eviction_policy="hybrid",
-    similarity_threshold=0.9,
+    similarity_threshold=0.3,
     persistence_enabled=True,
     cleanup_interval=30,
     snapshot_interval=60
@@ -219,7 +219,7 @@ DEVELOPMENT_CONFIG = CacheConfig(
     memory_limit="50%",
     ttl_enabled=True,
     eviction_policy="lru",
-    similarity_threshold=0.8,
+    similarity_threshold=0.3,
     persistence_enabled=False,
     cleanup_interval=120,
     snapshot_interval=300

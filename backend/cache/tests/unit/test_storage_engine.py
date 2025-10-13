@@ -12,7 +12,7 @@ from utils.config import CacheConfig
 
 def test_storage_engine_basic():
     """Test basic storage engine functionality."""
-    print("🧪 Testing Storage Engine Basic Functionality...")
+    print("Testing Storage Engine Basic Functionality...")
     
     # Create config and storage engine
     config = CacheConfig(memory_limit="100MB")
@@ -51,12 +51,12 @@ def test_storage_engine_basic():
     assert success, "Clear operation should succeed"
     assert storage.get_memory_usage()['by_level']['query']['bytes'] == 0, "Level should be empty"
     
-    print("✅ Storage Engine Basic Tests Passed!")
+    print("Storage Engine Basic Tests Passed!")
 
 
 def test_storage_engine_memory_limits():
     """Test memory limit enforcement."""
-    print("🧪 Testing Memory Limit Enforcement...")
+    print("Testing Memory Limit Enforcement...")
     
     # Create config with small memory limit
     config = CacheConfig(memory_limit="1KB")
@@ -69,12 +69,12 @@ def test_storage_engine_memory_limits():
     # Should fail due to memory limit
     assert not success, "Should not be able to store data exceeding memory limit"
     
-    print("✅ Memory Limit Tests Passed!")
+    print("Memory Limit Tests Passed!")
 
 
 def test_storage_engine_multiple_levels():
     """Test multiple cache levels."""
-    print("🧪 Testing Multiple Cache Levels...")
+    print("Testing Multiple Cache Levels...")
     
     config = CacheConfig(memory_limit="10MB")
     storage = StorageEngine(config)
@@ -98,12 +98,12 @@ def test_storage_engine_multiple_levels():
     assert stats['entries_by_level']['context'] == 1
     assert stats['entries_by_level']['result'] == 1
     
-    print("✅ Multiple Levels Tests Passed!")
+    print("Multiple Levels Tests Passed!")
 
 
 def test_storage_engine_error_handling():
     """Test error handling."""
-    print("🧪 Testing Error Handling...")
+    print("Testing Error Handling...")
     
     config = CacheConfig(memory_limit="10MB")
     storage = StorageEngine(config)
@@ -116,11 +116,11 @@ def test_storage_engine_error_handling():
     result = storage.set("", "value", level="query")  # Empty string key
     assert result, "Should handle empty string keys"
     
-    print("✅ Error Handling Tests Passed!")
+    print("Error Handling Tests Passed!")
 
 
 if __name__ == "__main__":
-    print("🚀 Running Storage Engine Tests...")
+    print("Running Storage Engine Tests...")
     
     try:
         test_storage_engine_basic()
@@ -128,9 +128,9 @@ if __name__ == "__main__":
         test_storage_engine_multiple_levels()
         test_storage_engine_error_handling()
         
-        print("\n🎉 ALL TESTS PASSED! Storage Engine is working correctly!")
+        print("\nALL TESTS PASSED! Storage Engine is working correctly!")
         
     except Exception as e:
-        print(f"\n❌ Test failed: {e}")
+        print(f"\nTest failed: {e}")
         import traceback
         traceback.print_exc()

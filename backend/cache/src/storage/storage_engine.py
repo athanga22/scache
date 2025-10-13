@@ -47,7 +47,7 @@ class StorageEngine:
         # Access tracking for LRU (last access timestamp)
         self.access_times = {}
         
-        print(f"✅ Storage engine initialized with {config.memory_limit} memory limit")
+        print(f"Storage engine initialized with {config.memory_limit} memory limit")
     
     def set(self, key: str, value: Any, level: str = "auto") -> bool:
         """
@@ -64,7 +64,7 @@ class StorageEngine:
         try:
             # Validate level
             if level not in self.storage:
-                print(f"❌ Invalid cache level: {level}")
+                print(f"Invalid cache level: {level}")
                 return False
             
             # Calculate memory usage
@@ -74,7 +74,7 @@ class StorageEngine:
             
             # Check if we have enough memory
             if not self._check_memory_available(size_delta):
-                print(f"❌ Insufficient memory for key: {key} (need {size_delta} bytes)")
+                print(f"Insufficient memory for key: {key} (need {size_delta} bytes)")
                 return False
             
             # Store the value
@@ -90,7 +90,7 @@ class StorageEngine:
             return True
             
         except Exception as e:
-            print(f"❌ Error storing key {key}: {e}")
+            print(f"Error storing key {key}: {e}")
             return False
     
     def get(self, key: str, level: str = "auto") -> Optional[Any]:
@@ -106,7 +106,7 @@ class StorageEngine:
         """
         try:
             if level not in self.storage:
-                print(f"❌ Invalid cache level: {level}")
+                print(f"Invalid cache level: {level}")
                 return None
             
             # Check if key exists
@@ -119,7 +119,7 @@ class StorageEngine:
             return self.storage[level][key]
             
         except Exception as e:
-            print(f"❌ Error retrieving key {key}: {e}")
+            print(f"Error retrieving key {key}: {e}")
             return None
     
     def delete(self, key: str, level: str = "auto") -> bool:
@@ -135,7 +135,7 @@ class StorageEngine:
         """
         try:
             if level not in self.storage:
-                print(f"❌ Invalid cache level: {level}")
+                print(f"Invalid cache level: {level}")
                 return False
             
             if key in self.storage[level]:
@@ -156,7 +156,7 @@ class StorageEngine:
             return False
             
         except Exception as e:
-            print(f"❌ Error deleting key {key}: {e}")
+            print(f"Error deleting key {key}: {e}")
             return False
     
     def exists(self, key: str, level: str = "auto") -> bool:
@@ -177,7 +177,7 @@ class StorageEngine:
             return key in self.storage[level]
             
         except Exception as e:
-            print(f"❌ Error checking existence of key {key}: {e}")
+            print(f"Error checking existence of key {key}: {e}")
             return False
     
     def clear(self, level: Optional[str] = None) -> bool:
@@ -211,13 +211,13 @@ class StorageEngine:
                     self.total_memory -= self.memory_usage[level]
                     self.memory_usage[level] = 0
                 else:
-                    print(f"❌ Invalid cache level: {level}")
+                    print(f"Invalid cache level: {level}")
                     return False
             
             return True
             
         except Exception as e:
-            print(f"❌ Error clearing cache: {e}")
+            print(f"Error clearing cache: {e}")
             return False
     
     def get_memory_usage(self) -> Dict[str, Union[int, float]]:

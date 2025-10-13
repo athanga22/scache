@@ -31,7 +31,7 @@ class EvictionPolicy:
         self.running = False
         self.lock = threading.RLock()
         
-        print(f"✅ Eviction Policy initialized: {config.eviction_policy} with {config.eviction_batch_size} batch size")
+        print(f"Eviction Policy initialized: {config.eviction_policy} with {config.eviction_batch_size} batch size")
     
     def record_access(self, key: str):
         """
@@ -76,8 +76,11 @@ class EvictionPolicy:
         Clear tracking data for a specific level.
         Note: This would need level information from storage engine.
         """
-        # Implementation depends on storage engine integration
-        pass
+        # For now, just clear all since we don't have level-specific tracking
+        # In a real implementation, this would clear only keys for the specific level
+        with self.lock:
+            self.access_order.clear()
+            self.access_counts.clear()
     
     def check_memory_available(self, value: Any) -> bool:
         """
@@ -174,7 +177,7 @@ class EvictionPolicy:
                             break
             
             if evicted_count > 0:
-                print(f"🧹 Evicted {evicted_count} entries, freed ~{evicted_memory} bytes")
+                print(f"Evicted {evicted_count} entries, freed ~{evicted_memory} bytes")
             
             return evicted_count
     
@@ -208,14 +211,14 @@ class EvictionPolicy:
                 name="EvictionMonitoringThread"
             )
             self.monitoring_thread.start()
-            print("✅ Eviction monitoring thread started")
+            print("Eviction monitoring thread started")
     
     def stop_monitoring_thread(self):
         """Stop background monitoring thread."""
         self.running = False
         if self.monitoring_thread and self.monitoring_thread.is_alive():
             self.monitoring_thread.join(timeout=5)
-            print("✅ Eviction monitoring thread stopped")
+            print("Eviction monitoring thread stopped")
     
     def _monitoring_loop(self):
         """Background monitoring loop for memory pressure."""
@@ -226,7 +229,7 @@ class EvictionPolicy:
                 time.sleep(30)  # Check every 30 seconds
                 
             except Exception as e:
-                print(f"❌ Eviction monitoring error: {e}")
+                print(f"Eviction monitoring error: {e}")
                 time.sleep(5)
     
     def get_stats(self) -> dict:

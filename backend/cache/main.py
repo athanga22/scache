@@ -21,7 +21,7 @@ from src.utils.config import CacheConfig
 
 def main():
     """Main entry point for the caching system."""
-    print("🚀 Starting Custom Caching System for RAG...")
+    print("Starting Custom Caching System for RAG...")
     
     # Load configuration
     config = CacheConfig()
@@ -35,12 +35,12 @@ def main():
     # Initialize monitoring
     metrics = CacheMetrics(cache)
     
-    print(f"✅ Cache initialized with {config.memory_limit} memory limit")
-    print(f"✅ TTL enabled: {config.ttl_enabled}")
-    print(f"✅ Eviction policy: {config.eviction_policy}")
+    print(f"Cache initialized with {config.memory_limit} memory limit")
+    print(f"TTL enabled: {config.ttl_enabled}")
+    print(f"Eviction policy: {config.eviction_policy}")
     
     return cache, api, metrics
 
 if __name__ == "__main__":
     cache, api, metrics = main()
-    print("🎯 Caching system ready for integration!")
+    print("Caching system ready for integration!")

@@ -38,7 +38,7 @@ class ThreadSafety:
         self._read_locks = 0
         self._write_locks = 0
         
-        print(f"✅ Thread Safety initialized: max_readers={max_readers}, timeout={lock_timeout}s")
+        print(f"Thread Safety initialized: max_readers={max_readers}, timeout={lock_timeout}s")
     
     @contextmanager
     def read_lock(self):
