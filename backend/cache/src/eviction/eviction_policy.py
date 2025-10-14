@@ -5,6 +5,7 @@ Handles cache eviction when memory limits are reached using LRU strategy.
 
 import time
 import threading
+import sys
 from typing import Dict, Any, List
 from collections import OrderedDict
 
@@ -32,6 +33,7 @@ class EvictionPolicy:
         self.lock = threading.RLock()
         
         print(f"Eviction Policy initialized: {config.eviction_policy} with {config.eviction_batch_size} batch size")
+        print(f"Max entries: {config.max_entries}, Eviction threshold: {config.eviction_threshold}")
     
     def record_access(self, key: str):
         """
@@ -107,22 +109,28 @@ class EvictionPolicy:
         Returns:
             True if eviction should be triggered
         """
-        usage_percentage = current_memory_usage / memory_limit
+        current_entries = len(self.access_order)
+        max_entries = self.config.max_entries
+        eviction_threshold = self.config.eviction_threshold
         
-        # Check thresholds
+        # Proactive eviction based on entry count (primary trigger)
+        if current_entries >= max_entries:
+            return True  # Hard limit reached - immediate eviction
+        elif current_entries >= max_entries * eviction_threshold:
+            return True  # Proactive eviction at 80% of max entries
+        
+        # Memory-based eviction (secondary trigger)
+        usage_percentage = current_memory_usage / memory_limit
         if usage_percentage >= self.memory_thresholds["critical"]:
             return True  # Critical - immediate eviction
         elif usage_percentage >= self.memory_thresholds["eviction"]:
             return True  # Eviction threshold reached
-        elif usage_percentage >= self.memory_thresholds["warning"]:
-            # Warning level - consider eviction
-            return len(self.access_order) > 100  # Only if many entries
         
         return False
     
     def evict_entries(self, storage_engine, target_memory_reduction: int = None) -> int:
         """
-        Evict entries to free up memory.
+        Evict entries to free up memory or reduce entry count.
         
         Args:
             storage_engine: Storage engine to evict from
@@ -136,34 +144,24 @@ class EvictionPolicy:
                 return 0
             
             evicted_count = 0
-            evicted_memory = 0
+            current_entries = len(self.access_order)
+            max_entries = self.config.max_entries
             
-            # Get current memory usage
-            current_memory = storage_engine.get_memory_usage()
-            current_usage = current_memory['total_bytes']
-            memory_limit = current_memory['limit_bytes']
+            # Determine how many entries to evict
+            if current_entries >= max_entries:
+                # Evict enough to get below max_entries
+                entries_to_evict = current_entries - max_entries + 1  # +1 to be safe
+            else:
+                # Evict based on memory if specified
+                if target_memory_reduction is None:
+                    return 0
+                entries_to_evict = min(self.eviction_batch_size, 5)  # Default batch
             
-            # Determine how much memory to free
-            if target_memory_reduction is None:
-                # Free enough to get below 80% usage
-                target_usage = memory_limit * 0.8
-                target_memory_reduction = max(0, current_usage - target_usage)
+            # Limit to batch size
+            entries_to_evict = min(entries_to_evict, self.eviction_batch_size)
             
             # Evict oldest entries first (LRU)
-            keys_to_evict = []
-            for key in self.access_order:
-                if evicted_memory >= target_memory_reduction:
-                    break
-                
-                # Estimate memory for this key (would need storage engine integration)
-                # For now, assume average entry size
-                estimated_size = 1024  # 1KB placeholder
-                keys_to_evict.append(key)
-                evicted_memory += estimated_size
-            
-            # Limit batch size
-            if len(keys_to_evict) > self.eviction_batch_size:
-                keys_to_evict = keys_to_evict[:self.eviction_batch_size]
+            keys_to_evict = list(self.access_order.keys())[:entries_to_evict]
             
             # Perform eviction
             for key in keys_to_evict:
@@ -177,9 +175,39 @@ class EvictionPolicy:
                             break
             
             if evicted_count > 0:
-                print(f"Evicted {evicted_count} entries, freed ~{evicted_memory} bytes")
+                print(f"Evicted {evicted_count} entries, cache now has {len(self.access_order)} entries (max: {self.config.max_entries})")
             
             return evicted_count
+    
+    def _estimate_entry_size(self, key: str, storage_engine) -> int:
+        """
+        Estimate memory size of a cache entry.
+        
+        Args:
+            key: Cache key
+            storage_engine: Storage engine to get actual data
+            
+        Returns:
+            Estimated size in bytes
+        """
+        try:
+            # Get actual data from storage engine
+            total_size = sys.getsizeof(key)
+            
+            # Estimate size for each cache level
+            for level in ["query", "embedding", "context", "result"]:
+                if storage_engine.exists(key, level):
+                    value = storage_engine.get(key, level)
+                    if value is not None:
+                        total_size += sys.getsizeof(value)
+            
+            # Minimum size for RAG responses (query + embedding + context + result)
+            # Typical RAG response: 2-10KB
+            return max(total_size, 2048)  # 2KB minimum
+            
+        except Exception:
+            # Fallback to realistic estimate for RAG responses
+            return 5120  # 5KB average for RAG responses
     
     def get_lru_order(self) -> List[str]:
         """

@@ -129,8 +129,12 @@ class Cache:
                 if level == "auto":
                     level = self._determine_cache_level(value)
                 
-                # Check memory limits before setting
-                if not self.eviction_policy.check_memory_available(value):
+                # Check if eviction is needed before setting
+                current_memory = self.storage.get_memory_usage()
+                current_entries = len(self.eviction_policy.access_order)
+                # Check if adding this entry would exceed limits
+                if (current_entries + 1 >= self.config.max_entries or 
+                    current_entries + 1 >= self.config.max_entries * self.config.eviction_threshold):
                     self.eviction_policy.evict_entries(self.storage)
                 
                 # Store the value
@@ -158,6 +162,12 @@ class Cache:
                     
                     # Update eviction policy
                     self.eviction_policy.record_access(key)
+                    
+                    # Check if we need to evict after adding this entry
+                    current_entries = len(self.eviction_policy.access_order)
+                    if current_entries >= self.config.max_entries:
+                        evicted_count = self.eviction_policy.evict_entries(self.storage)
+                        self.stats['evictions'] += evicted_count
                     
                     return True
                 return False

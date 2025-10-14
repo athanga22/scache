@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+backend/cache/results/
+backend/cache/cache_persistence/
+backend/cache/api_config.py
