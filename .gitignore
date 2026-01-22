@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+backend/cache/results/
+backend/cache/cache_persistence/
+backend/cache/api_config.py
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.env

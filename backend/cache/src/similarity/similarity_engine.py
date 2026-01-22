@@ -147,7 +147,45 @@ class SimilarityEngine:
             
         except Exception as e:
             print(f"Error creating Google AI embedding: {e}")
-            raise e  # Don't use fallback, fail fast
+            print("Falling back to sentence-transformers...")
+            return self._create_sentence_transformer_embedding(query)
+    
+    def _create_sentence_transformer_embedding(self, query: str) -> np.ndarray:
+        """Create embedding using sentence-transformers (local, no API)."""
+        try:
+            from sentence_transformers import SentenceTransformer
+            
+            # Use a lightweight model
+            if not hasattr(self, '_st_model'):
+                self._st_model = SentenceTransformer('all-MiniLM-L6-v2')
+            
+            embedding = self._st_model.encode(query, convert_to_numpy=True)
+            embedding_array = np.array(embedding, dtype=np.float32)
+            
+            # Normalize to match Google embedding dimensions (pad/truncate to 768)
+            if len(embedding_array) < 768:
+                # Pad with zeros
+                padded = np.zeros(768, dtype=np.float32)
+                padded[:len(embedding_array)] = embedding_array
+                embedding_array = padded
+            elif len(embedding_array) > 768:
+                # Truncate
+                embedding_array = embedding_array[:768]
+            
+            # Cache the embedding
+            query_hash = self.generate_query_hash(query)
+            self.query_embeddings[query_hash] = embedding_array
+            self.stats['embeddings_cached'] += 1
+            
+            print(f"Created sentence-transformer embedding (dim: {len(embedding_array)})")
+            return embedding_array
+            
+        except ImportError:
+            print("sentence-transformers not installed, using hash-based fallback")
+            return self._create_fallback_embedding(query)
+        except Exception as e:
+            print(f"Error with sentence-transformers: {e}")
+            return self._create_fallback_embedding(query)
     
     def _create_fallback_embedding(self, query: str) -> np.ndarray:
         """

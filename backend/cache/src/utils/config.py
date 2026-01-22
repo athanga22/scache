@@ -49,6 +49,8 @@ class CacheConfig:
     # Eviction settings
     eviction_policy: str = "lru"  # lru, lfu, hybrid
     eviction_batch_size: int = 10
+    max_entries: int = 50  # Maximum number of cache entries
+    eviction_threshold: float = 0.8  # Evict when 80% of max_entries reached
     
     # Performance settings
     cleanup_interval: int = 60  # 1 minute
