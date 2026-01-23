@@ -1,10 +1,10 @@
 # Semantic Caching System for RAG Applications
 
-A high-performance semantic caching system designed to reduce LLM API costs and improve response latency for RAG (Retrieval-Augmented Generation) applications. Uses FAISS for efficient similarity search and sentence-transformers for semantic embeddings.
+A semantic caching system for RAG (Retrieval-Augmented Generation) applications that reduces LLM API costs and improves response latency. Uses FAISS for similarity search and sentence-transformers for semantic embeddings.
 
 ## Overview
 
-This caching system provides intelligent semantic matching for RAG queries, allowing similar questions to reuse cached responses. It achieves significant cost reduction and latency improvement while maintaining high accuracy in duplicate detection.
+This caching system provides semantic matching for RAG queries, allowing similar questions to reuse cached responses. It reduces API costs and improves latency while maintaining reasonable accuracy in duplicate detection.
 
 ## Key Features
 
@@ -12,17 +12,17 @@ This caching system provides intelligent semantic matching for RAG queries, allo
 - **Multi-Level Caching**: Supports query, embedding, context, and result-level caching
 - **LRU Eviction Policy**: Memory-efficient eviction when cache limits are reached
 - **TTL Management**: Automatic expiration with configurable time-to-live
-- **Thread-Safe Operations**: Concurrent access support for production environments
+- **Thread-Safe Operations**: Concurrent access support
 - **Comprehensive Metrics**: Tracks hit rate, precision, recall, accuracy, and eviction statistics
 - **Real LLM Integration**: Benchmarks with actual Claude API calls for accurate performance measurement
 
 ## Performance Metrics
 
-Based on benchmark results with 200 query pairs from Quora dataset:
+Benchmark results with 200 query pairs from Quora dataset:
 
-- **Cache Hit Rate**: 56% (Target: 60-75%)
-- **API Call Reduction**: 56% (Target: ≥40%)
-- **Latency Improvement**: 88.8× speedup (Target: 10-30×)
+- **Cache Hit Rate**: 56% (target: 60-75%, slightly below target)
+- **API Call Reduction**: 56% (meets target of ≥40%)
+- **Latency Improvement**: 88.8× speedup (exceeds target of 10-30×)
   - Cache Hit: 26.1ms average
   - Cache Miss: 2322.1ms average (includes LLM call)
 - **Classification Accuracy**: 86.0%
@@ -134,7 +134,7 @@ The benchmark automatically tests multiple cache sizes:
 - 50% of query pairs (e.g., 100 entries for 200 pairs)
 - 100% of query pairs (e.g., 200 entries for 200 pairs)
 
-Results are compared to determine optimal cache size based on:
+Results are compared to determine appropriate cache size based on:
 - Hit rate
 - Eviction frequency
 - Memory usage
@@ -327,20 +327,20 @@ If you see "WARNING: RAG pipeline is using MOCK":
 
 ## Results Interpretation
 
-### Good Performance Indicators
+### Performance Indicators
 
-- Cache hit rate: 50-60%+ for real-world queries
+- Cache hit rate: 50-60% for real-world queries
 - API reduction: 40%+ (meets target)
 - Speedup: 10-30× (meets target)
-- Precision: 80%+ (few false positives)
-- Recall: 85%+ (catches most duplicates)
+- Precision: 80%+ (acceptable false positive rate)
+- Recall: 85%+ (good duplicate detection)
 
 ### Cache Size Selection
 
 Based on benchmark results:
 - **Too Small** (< 50% of queries): High eviction rate, lower hit rate
-- **Optimal** (100% of queries): Minimal evictions, best hit rate
-- **Too Large** (> 200% of queries): No performance gain, wasted memory
+- **Recommended** (100% of queries): Minimal evictions, good hit rate
+- **Larger** (> 200% of queries): Diminishing returns, higher memory usage
 
 ## License
 
@@ -348,7 +348,7 @@ MIT License
 
 ## Contributing
 
-This is a production-ready caching system. When contributing:
+When contributing:
 - Maintain test coverage
 - Follow existing code style
 - Update benchmarks when making performance changes
