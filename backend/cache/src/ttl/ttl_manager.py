@@ -12,14 +12,23 @@ from collections import defaultdict
 class TTLManager:
     """Manages TTL expiration for cache entries with background cleanup."""
     
-    def __init__(self, config):
-        """Initialize TTL manager."""
+    def __init__(self, config, storage_engine=None, cache_instance=None):
+        """
+        Initialize TTL manager.
+        
+        Args:
+            config: Cache configuration
+            storage_engine: Storage engine reference (for cleanup)
+            cache_instance: Cache instance reference (for cleanup)
+        """
         self.config = config
         # key -> (expiry_time, level, ttl_value)
         self.ttl_data: Dict[str, Tuple[float, str, int]] = {}
         self.cleanup_thread = None
         self.running = False
         self.lock = threading.RLock()
+        self.storage_engine = storage_engine
+        self.cache_instance = cache_instance
         
         print(f"TTL Manager initialized with {config.cleanup_interval}s cleanup interval")
     
@@ -162,12 +171,19 @@ class TTLManager:
         """Background cleanup loop for expired entries."""
         while self.running:
             try:
-                # Get expired keys
-                expired_keys = self.get_expired_keys()
-                
-                if expired_keys:
-                    print(f"TTL cleanup: removing {len(expired_keys)} expired keys")
-                    # Note: Actual removal is handled by the cache when it checks TTL
+                # Actually delete expired entries if we have storage engine reference
+                if self.storage_engine and self.cache_instance:
+                    deleted_count = self.cleanup_expired_entries(self.storage_engine, self.cache_instance)
+                    if deleted_count > 0:
+                        # Also clear from similarity engine if cache instance available
+                        if hasattr(self.cache_instance, 'similarity_engine'):
+                            # Remove from similarity engine (lazy - will be cleaned on next access)
+                            pass
+                else:
+                    # Fallback: just report expired keys
+                    expired_keys = self.get_expired_keys()
+                    if expired_keys:
+                        print(f"TTL cleanup: found {len(expired_keys)} expired keys (storage engine not available)")
                 
                 # Sleep until next cleanup
                 time.sleep(self.config.cleanup_interval)
@@ -175,6 +191,42 @@ class TTLManager:
             except Exception as e:
                 print(f"TTL cleanup error: {e}")
                 time.sleep(1)  # Short sleep on error
+    
+    def cleanup_expired_entries(self, storage_engine, cache_instance):
+        """
+        Actually delete expired entries from storage.
+        
+        Args:
+            storage_engine: Storage engine to delete from
+            cache_instance: Cache instance for cleanup operations
+            
+        Returns:
+            Number of entries deleted
+        """
+        with self.lock:
+            expired_keys = self.get_expired_keys()
+            deleted_count = 0
+            
+            for key in expired_keys:
+                # Get the level from TTL data
+                if key in self.ttl_data:
+                    _, level, _ = self.ttl_data[key]
+                    # Delete from storage
+                    if storage_engine.exists(key, level):
+                        storage_engine.delete(key, level)
+                        deleted_count += 1
+                    
+                    # Also remove from eviction policy if available
+                    if hasattr(cache_instance, 'eviction_policy'):
+                        cache_instance.eviction_policy.remove_key(key)
+                    
+                    # Remove from TTL tracking
+                    del self.ttl_data[key]
+            
+            if deleted_count > 0:
+                print(f"TTL cleanup: deleted {deleted_count} expired entries")
+            
+            return deleted_count
     
     def get_stats(self) -> dict:
         """

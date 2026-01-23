@@ -6,11 +6,15 @@ Handles similarity matching between queries and cached responses using embedding
 import numpy as np
 import time
 import threading
+import os
 from typing import Dict, List, Tuple, Optional, Any
 from collections import defaultdict
 import hashlib
 import re
 import faiss
+
+# Disable multiprocessing in sentence-transformers to prevent resource leaks
+os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 
 
 class SimilarityEngine:
@@ -59,7 +63,35 @@ class SimilarityEngine:
             'average_similarity': 0.0
         }
         
+        # Pre-load sentence-transformers model if using it (prevents lazy loading leaks)
+        if config.embedding_provider == "sentence-transformers":
+            self._initialize_sentence_transformer_model(config)
+        
         print(f"Similarity Engine initialized with FAISS (threshold: {config.similarity_threshold})")
+    
+    def _initialize_sentence_transformer_model(self, config):
+        """Initialize sentence-transformers model once at startup to prevent resource leaks."""
+        try:
+            from sentence_transformers import SentenceTransformer
+            
+            model_name = getattr(config, 'embedding_model', 'all-mpnet-base-v2')
+            
+            try:
+                self._st_model = SentenceTransformer(model_name)
+                self._st_model_name = model_name
+                print(f"Pre-loaded {model_name} (768-dim) for sentence-transformers")
+            except Exception as e:
+                try:
+                    self._st_model = SentenceTransformer('all-mpnet-base-v2')
+                    self._st_model_name = 'all-mpnet-base-v2'
+                    print("Pre-loaded all-mpnet-base-v2 (768-dim) for sentence-transformers")
+                except Exception:
+                    self._st_model = SentenceTransformer('all-MiniLM-L6-v2')
+                    self._st_model_name = 'all-MiniLM-L6-v2'
+                    print("Pre-loaded all-MiniLM-L6-v2 for sentence-transformers")
+        except ImportError:
+            # sentence-transformers not available
+            pass
     
     def normalize_query(self, query: str) -> str:
         """
@@ -105,13 +137,18 @@ class SimilarityEngine:
     
     def create_simple_embedding(self, query: str) -> np.ndarray:
         """
-        Create an embedding for a query using Google Generative AI.
+        Create an embedding for a query using configured embedding provider.
+        
+        Priority order:
+        1. Provider specified in config (sentence-transformers, google, openai, huggingface)
+        2. Fallback to sentence-transformers if provider fails
+        3. Final fallback to hash-based embeddings
         
         Args:
             query: Query string
             
         Returns:
-            Embedding vector
+            Embedding vector (768 dimensions)
         """
         try:
             # Check cache first
@@ -120,17 +157,38 @@ class SimilarityEngine:
                 print(f"Using cached embedding for: {query[:30]}...")
                 return self.query_embeddings[query_hash]
             
-            # Use Google Generative AI embeddings
+            # Get provider from config (config takes precedence, no env var override)
+            provider = getattr(self.config, 'embedding_provider', 'sentence-transformers').lower()
+            
+            # Try provider in priority order
+            if provider == "sentence-transformers" or provider == "local":
+                return self._create_sentence_transformer_embedding(query)
+            elif provider == "google":
+                return self._create_google_embedding(query)
+            elif provider == "openai":
+                return self._create_openai_embedding(query)
+            elif provider == "huggingface":
+                return self._create_huggingface_embedding(query)
+            else:
+                # Default to sentence-transformers
+                print(f"Unknown provider '{provider}', using sentence-transformers")
+                return self._create_sentence_transformer_embedding(query)
+                
+        except Exception as e:
+            print(f"Error creating embedding: {e}")
+            print("Falling back to sentence-transformers...")
+            return self._create_sentence_transformer_embedding(query)
+    
+    def _create_google_embedding(self, query: str) -> np.ndarray:
+        """Create embedding using Google Generative AI."""
+        try:
             from langchain_google_genai import GoogleGenerativeAIEmbeddings
             import os
             
-            # Check for API key
             api_key = os.getenv("GOOGLE_API_KEY")
             if not api_key:
-                print("GOOGLE_API_KEY not set, cannot create real embeddings")
-                raise ValueError("Google API key required for semantic similarity")
+                raise ValueError("GOOGLE_API_KEY not set")
             
-            # Create embeddings with the API key
             embeddings = GoogleGenerativeAIEmbeddings(
                 model="models/embedding-001",
                 google_api_key=api_key
@@ -138,39 +196,194 @@ class SimilarityEngine:
             embedding = embeddings.embed_query(query)
             embedding_array = np.array(embedding, dtype=np.float32)
             
+            # Ensure 768 dimensions
+            if len(embedding_array) != 768:
+                print(f"Warning: Google embedding has {len(embedding_array)} dims, expected 768")
+                if len(embedding_array) < 768:
+                    padded = np.zeros(768, dtype=np.float32)
+                    padded[:len(embedding_array)] = embedding_array
+                    embedding_array = padded
+                else:
+                    embedding_array = embedding_array[:768]
+            
             # Cache the embedding
+            query_hash = self.generate_query_hash(query)
             self.query_embeddings[query_hash] = embedding_array
             self.stats['embeddings_cached'] += 1
             
-            print(f"Created Google AI embedding for query: {query[:30]}... (dim: {len(embedding_array)})")
+            print(f"Created Google AI embedding (dim: {len(embedding_array)})")
             return embedding_array
             
         except Exception as e:
-            print(f"Error creating Google AI embedding: {e}")
-            print("Falling back to sentence-transformers...")
-            return self._create_sentence_transformer_embedding(query)
+            print(f"Error with Google embeddings: {e}")
+            raise
+    
+    def _create_openai_embedding(self, query: str) -> np.ndarray:
+        """Create embedding using OpenAI."""
+        try:
+            from langchain_openai import OpenAIEmbeddings
+            import os
+            
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key:
+                raise ValueError("OPENAI_API_KEY not set")
+            
+            # OpenAI text-embedding-3-small is 1536-dim, text-embedding-ada-002 is 1536-dim
+            # We'll use text-embedding-3-small and truncate/pad to 768
+            embeddings = OpenAIEmbeddings(
+                model="text-embedding-3-small",
+                openai_api_key=api_key
+            )
+            embedding = embeddings.embed_query(query)
+            embedding_array = np.array(embedding, dtype=np.float32)
+            
+            # OpenAI embeddings are 1536-dim, we need 768
+            # Take first 768 dimensions (they're usually most important)
+            if len(embedding_array) > 768:
+                embedding_array = embedding_array[:768]
+            elif len(embedding_array) < 768:
+                padded = np.zeros(768, dtype=np.float32)
+                padded[:len(embedding_array)] = embedding_array
+                embedding_array = padded
+            
+            # Normalize
+            norm = np.linalg.norm(embedding_array)
+            if norm > 0:
+                embedding_array = embedding_array / norm
+            
+            # Cache
+            query_hash = self.generate_query_hash(query)
+            self.query_embeddings[query_hash] = embedding_array
+            self.stats['embeddings_cached'] += 1
+            
+            print(f"Created OpenAI embedding (dim: {len(embedding_array)})")
+            return embedding_array
+            
+        except Exception as e:
+            print(f"Error with OpenAI embeddings: {e}")
+            raise
+    
+    def _create_huggingface_embedding(self, query: str) -> np.ndarray:
+        """Create embedding using HuggingFace transformers."""
+        try:
+            from transformers import AutoTokenizer, AutoModel
+            import torch
+            
+            model_name = getattr(self.config, 'embedding_model', 'sentence-transformers/all-mpnet-base-v2')
+            
+            if not hasattr(self, '_hf_tokenizer') or not hasattr(self, '_hf_model'):
+                self._hf_tokenizer = AutoTokenizer.from_pretrained(model_name)
+                self._hf_model = AutoModel.from_pretrained(model_name)
+                self._hf_model.eval()
+            
+            # Tokenize and encode
+            inputs = self._hf_tokenizer(query, return_tensors="pt", padding=True, truncation=True)
+            with torch.no_grad():
+                outputs = self._hf_model(**inputs)
+                # Use mean pooling
+                embedding = outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
+            
+            embedding_array = np.array(embedding, dtype=np.float32)
+            
+            # Ensure 768 dimensions
+            if len(embedding_array) != 768:
+                if len(embedding_array) < 768:
+                    padded = np.zeros(768, dtype=np.float32)
+                    padded[:len(embedding_array)] = embedding_array
+                    embedding_array = padded
+                else:
+                    embedding_array = embedding_array[:768]
+            
+            # Normalize
+            norm = np.linalg.norm(embedding_array)
+            if norm > 0:
+                embedding_array = embedding_array / norm
+            
+            # Cache
+            query_hash = self.generate_query_hash(query)
+            self.query_embeddings[query_hash] = embedding_array
+            self.stats['embeddings_cached'] += 1
+            
+            print(f"Created HuggingFace embedding (dim: {len(embedding_array)})")
+            return embedding_array
+            
+        except Exception as e:
+            print(f"Error with HuggingFace embeddings: {e}")
+            raise
     
     def _create_sentence_transformer_embedding(self, query: str) -> np.ndarray:
         """Create embedding using sentence-transformers (local, no API)."""
         try:
             from sentence_transformers import SentenceTransformer
+            import os
             
-            # Use a lightweight model
-            if not hasattr(self, '_st_model'):
-                self._st_model = SentenceTransformer('all-MiniLM-L6-v2')
+            # Disable multiprocessing to prevent resource leaks
+            os.environ['TOKENIZERS_PARALLELISM'] = 'false'
             
-            embedding = self._st_model.encode(query, convert_to_numpy=True)
+            # Get model from config or use default
+            model_name = getattr(self.config, 'embedding_model', 'all-mpnet-base-v2')
+            
+            # Use a model with 768 dimensions to match Google embeddings
+            # all-mpnet-base-v2 has 768 dimensions (better than all-MiniLM-L6-v2 which has 384)
+            # Model should already be loaded in __init__, but check just in case
+            if not hasattr(self, '_st_model') or getattr(self, '_st_model_name', None) != model_name:
+                # Fallback: load if not already loaded (shouldn't happen if __init__ worked)
+                try:
+                    self._st_model = SentenceTransformer(model_name)
+                    self._st_model_name = model_name
+                    print(f"Lazy-loaded {model_name} (768-dim) for sentence-transformers")
+                except Exception as e:
+                    try:
+                        self._st_model = SentenceTransformer('all-mpnet-base-v2')
+                        self._st_model_name = 'all-mpnet-base-v2'
+                        print("Lazy-loaded all-mpnet-base-v2 (768-dim) for sentence-transformers")
+                    except Exception:
+                        self._st_model = SentenceTransformer('all-MiniLM-L6-v2')
+                        self._st_model_name = 'all-MiniLM-L6-v2'
+                        print("Lazy-loaded all-MiniLM-L6-v2 for sentence-transformers")
+            
+            # Encode with multiprocessing disabled (batch_size=1, no parallel processing)
+            embedding = self._st_model.encode(
+                query, 
+                convert_to_numpy=True,
+                show_progress_bar=False,
+                batch_size=1,  # Single query, no batching = no multiprocessing
+                device='cpu'   # Force CPU to avoid GPU multiprocessing issues
+            )
             embedding_array = np.array(embedding, dtype=np.float32)
             
-            # Normalize to match Google embedding dimensions (pad/truncate to 768)
-            if len(embedding_array) < 768:
-                # Pad with zeros
+            # Check model dimensions
+            model_dim = len(embedding_array)
+            
+            # If model is 768-dim, use directly (no padding needed)
+            if model_dim == 768:
+                # Perfect match - no transformation needed
+                pass
+            elif model_dim < 768:
+                # Pad smaller embeddings to 768 (but this is not ideal)
+                # Better to use a 768-dim model, but handle gracefully
+                print(f"Warning: Model has {model_dim} dimensions, padding to 768 (semantic quality may be reduced)")
                 padded = np.zeros(768, dtype=np.float32)
-                padded[:len(embedding_array)] = embedding_array
+                padded[:model_dim] = embedding_array
+                # Normalize the original embedding first
+                norm = np.linalg.norm(embedding_array)
+                if norm > 0:
+                    embedding_array = embedding_array / norm
+                # Fill padded portion with small random values to avoid all zeros
+                padded[model_dim:] = np.random.normal(0, 0.01, 768 - model_dim).astype(np.float32)
                 embedding_array = padded
-            elif len(embedding_array) > 768:
-                # Truncate
+            elif model_dim > 768:
+                # Truncate larger embeddings (rare case)
+                print(f"Warning: Model has {model_dim} dimensions, truncating to 768")
                 embedding_array = embedding_array[:768]
+            
+            # Ensure final embedding is 768 dimensions
+            assert len(embedding_array) == 768, f"Embedding must be 768-dim, got {len(embedding_array)}"
+            
+            # Normalize for cosine similarity
+            norm = np.linalg.norm(embedding_array)
+            if norm > 0:
+                embedding_array = embedding_array / norm
             
             # Cache the embedding
             query_hash = self.generate_query_hash(query)

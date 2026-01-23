@@ -10,6 +10,10 @@ Tests the complete end-to-end workflow:
 """
 
 import os
+# CRITICAL: Disable multiprocessing BEFORE any imports to prevent resource leaks
+os.environ['TOKENIZERS_PARALLELISM'] = 'false'
+os.environ['OMP_NUM_THREADS'] = '1'  # Disable OpenMP threading
+
 import sys
 import time
 import json
@@ -24,11 +28,12 @@ from utils.config import CacheConfig
 
 
 class RealRAGPipeline:
-    """REAL RAG pipeline using Google Gemini LLM and embeddings."""
+    """REAL RAG pipeline using Claude (Anthropic) LLM and embeddings."""
     
-    def __init__(self):
+    def __init__(self, use_fast_model=False):
         self.llm_call_count = 0
         self.retrieval_count = 0
+        self.use_fast_model = use_fast_model
         self._setup_rag()
         
     def _setup_rag(self):
@@ -45,26 +50,67 @@ class RealRAGPipeline:
             from api_config import setup_api_keys
             setup_api_keys()
             
-            from langchain.chat_models import init_chat_model
-            from langchain_google_genai import GoogleGenerativeAIEmbeddings
             from langchain_core.vectorstores import InMemoryVectorStore
             from langchain_core.documents import Document
             from langchain_text_splitters import RecursiveCharacterTextSplitter
             from langgraph.graph import StateGraph, START
             from typing_extensions import TypedDict
-            from langchain import hub
+            try:
+                from langchain_hub import hub
+            except ImportError:
+                hub = None
             
-            # Check for API key
-            if not os.getenv("GOOGLE_API_KEY"):
-                print("GOOGLE_API_KEY not set, using mock RAG")
+            # Check for Claude API key
+            if not os.getenv("ANTHROPIC_API_KEY"):
+                print("ANTHROPIC_API_KEY not set, using mock RAG")
                 self.use_mock = True
                 return
             
-            # Initialize LLM
-            self.llm = init_chat_model("gemini-2.0-flash", model_provider="google_genai")
+            # Initialize LLM with Claude (use faster model if requested for benchmarking)
+            # Using Haiku 3.5 for benchmarking - 10× cheaper and 2× faster than Sonnet
+            model_name = "claude-3-5-haiku-20241022" if self.use_fast_model else "claude-3-7-sonnet-20250219"
+            if self.use_fast_model:
+                print("Using Claude Haiku (faster/cheaper) for benchmarking")
+            try:
+                from langchain.chat_models import init_chat_model
+                self.llm = init_chat_model(model_name, model_provider="anthropic")
+            except Exception as e1:
+                try:
+                    # Fallback: Try with ChatAnthropic directly
+                    from langchain_anthropic import ChatAnthropic
+                    self.llm = ChatAnthropic(model=model_name)
+                except Exception as e2:
+                    print(f"Failed to initialize Claude LLM: {e1}, {e2}")
+                    raise
             
-            # Initialize embeddings
-            self.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+            # Initialize embeddings (use HuggingFace - local, no API needed)
+            # IMPORTANT: Disable multiprocessing to prevent resource leaks
+            import os
+            os.environ['TOKENIZERS_PARALLELISM'] = 'false'
+            
+            print("Using HuggingFace sentence-transformers (local embeddings, no API key needed)")
+            try:
+                from langchain_community.embeddings import HuggingFaceEmbeddings
+                self.embeddings = HuggingFaceEmbeddings(
+                    model_name="sentence-transformers/all-mpnet-base-v2",
+                    model_kwargs={'device': 'cpu'},  # Force CPU, no GPU multiprocessing
+                    encode_kwargs={'normalize_embeddings': True, 'batch_size': 1}  # Disable batching
+                )
+                print("Using HuggingFace embeddings (all-mpnet-base-v2)")
+            except ImportError:
+                # Fallback: try langchain_huggingface if available
+                try:
+                    from langchain_huggingface import HuggingFaceEmbeddings
+                    self.embeddings = HuggingFaceEmbeddings(
+                        model_name="sentence-transformers/all-mpnet-base-v2",
+                        model_kwargs={'device': 'cpu'},
+                        encode_kwargs={'normalize_embeddings': True, 'batch_size': 1}
+                    )
+                    print("Using langchain_huggingface embeddings")
+                except ImportError:
+                    print("Warning: Neither langchain_community nor langchain_huggingface available")
+                    print("Install with: pip install langchain-community")
+                    raise
             
             # Initialize vector store
             self.vector_store = InMemoryVectorStore(self.embeddings)
@@ -82,11 +128,26 @@ class RealRAGPipeline:
             self.vector_store.add_documents(sample_docs)
             
             # Get RAG prompt (with fallback)
-            try:
-                self.prompt = hub.pull("rlm/rag-prompt")
-            except Exception as e:
-                print(f"LangSmith prompt failed: {e}")
-                print("Using local prompt template")
+            if hub is not None:
+                try:
+                    self.prompt = hub.pull("rlm/rag-prompt")
+                except Exception as e:
+                    print(f"LangSmith prompt failed: {e}")
+                    print("Using local prompt template")
+                    from langchain_core.prompts import PromptTemplate
+                    self.prompt = PromptTemplate(
+                        input_variables=["question", "context"],
+                        template="""Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
+
+Context:
+{context}
+
+Question: {question}
+
+Answer:"""
+                    )
+            else:
+                print("langchain_hub not available, using local prompt template")
                 from langchain_core.prompts import PromptTemplate
                 self.prompt = PromptTemplate(
                     input_variables=["question", "context"],
@@ -123,7 +184,7 @@ Answer:"""
             self.graph = graph_builder.compile()
             
             self.use_mock = False
-            print("Real RAG pipeline initialized with Google Gemini")
+            print("Real RAG pipeline initialized with Claude (Anthropic)")
             
             # Test the pipeline with a simple question to ensure it works
             try:
@@ -212,7 +273,7 @@ def test_rag_cache_integration():
         print("WARNING: Using MOCK RAG pipeline - results will not reflect real performance!")
         print("   This means no real LLM calls will be made.")
     else:
-        print("Using REAL RAG pipeline with Google Gemini LLM")
+        print("Using REAL RAG pipeline with Claude (Anthropic) LLM")
     
     print("Clearing cache for clean test...")
     cache.clear()
@@ -298,7 +359,7 @@ def test_rag_cache_integration():
     print(f"   Cache hits: {cache_hits}")
     print(f"   LLM calls saved: {cache_hits}")
     print(f"   Cost savings: {cache_hit_rate:.1%} of LLM calls avoided")
-    print(f"   Real RAG pipeline: {'ACTIVE' if not rag_pipeline.use_mock else 'MOCK (API key missing)'}")
+    print(f"   Real RAG pipeline: {'ACTIVE (Claude)' if not rag_pipeline.use_mock else 'MOCK (ANTHROPIC_API_KEY missing)'}")
     
     # Performance comparison
     print(f"\nPERFORMANCE COMPARISON:")

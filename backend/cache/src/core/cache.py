@@ -60,7 +60,7 @@ class Cache:
         
         # Initialize components
         self.storage = StorageEngine(config)
-        self.ttl_manager = TTLManager(config)
+        self.ttl_manager = TTLManager(config, self.storage, self)
         self.eviction_policy = EvictionPolicy(config)
         self.thread_safety = ThreadSafety(
             max_readers=config.max_threads,
@@ -146,10 +146,16 @@ class Cache:
                     self.ttl_manager.set_ttl(key, ttl, level)
                     
                     # Cache embedding for similarity matching
-                    if isinstance(value, str) and level in ["query", "embedding", "result"]:
-                        # For RAG results, we want to cache the query (key) for similarity matching
-                        # For other levels, we cache the value
-                        query_for_embedding = key if level == "result" else value
+                    # For "result" level, always cache the key (query) regardless of value type
+                    # For other levels, only cache if value is a string
+                    if level == "result":
+                        # For RAG results, cache the query (key) for similarity matching
+                        query_for_embedding = key
+                        embedding = self.similarity_engine.create_simple_embedding(query_for_embedding)
+                        self.similarity_engine.cache_embedding(query_for_embedding, embedding, level)
+                    elif isinstance(value, str) and level in ["query", "embedding"]:
+                        # For other levels, cache the value if it's a string
+                        query_for_embedding = value
                         embedding = self.similarity_engine.create_simple_embedding(query_for_embedding)
                         self.similarity_engine.cache_embedding(query_for_embedding, embedding, level)
                     
@@ -346,9 +352,13 @@ class Cache:
                     if level is None:
                         self.ttl_manager.clear_all()
                         self.eviction_policy.clear_all()
+                        # Clear similarity engine (FAISS indices and metadata)
+                        self.similarity_engine.clear_all()
                     else:
                         self.ttl_manager.clear_level(level)
                         self.eviction_policy.clear_level(level)
+                        # Clear similarity engine for specific level
+                        self.similarity_engine.clear_level(level)
                 return success
         except Exception as e:
             print(f"Error clearing cache: {e}")
@@ -488,12 +498,11 @@ class Cache:
         """
         try:
             # Cache the result
+            # Note: set() will automatically cache the embedding for "result" level
+            # So we don't need to duplicate the embedding caching here
             success = self.set(query, result, ttl, "result")
             
             if success:
-                # Create and cache embedding for semantic matching
-                embedding = self.similarity_engine.create_simple_embedding(query)
-                self.similarity_engine.cache_embedding(query, embedding, "result")
                 print(f"RAG result cached for query: {query[:50]}...")
             
             return success
