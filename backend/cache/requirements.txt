@@ -7,9 +7,18 @@ pandas>=1.3.0
 scikit-learn>=1.0.0
 faiss-cpu>=1.7.0
 
+# For LLM (Claude)
+langchain-anthropic>=0.1.0
+
+# For embeddings (fallback)
+langchain-community>=0.0.20  # For HuggingFace embeddings wrapper
+
 # For embeddings
 sentence-transformers>=2.2.0
-langchain-google-genai>=0.0.5
+langchain-google-genai>=0.0.5  # Optional: for Google embeddings
+langchain-openai>=0.1.0  # Optional: for OpenAI embeddings
+transformers>=4.30.0  # Optional: for HuggingFace embeddings
+torch>=2.0.0  # Optional: for HuggingFace embeddings
 
 # For persistence and serialization
 msgpack>=1.0.0

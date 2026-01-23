@@ -56,6 +56,10 @@ class CacheConfig:
     cleanup_interval: int = 60  # 1 minute
     similarity_threshold: float = 0.75  # Higher threshold for better quality matches
     
+    # Embedding provider settings
+    embedding_provider: str = "sentence-transformers"  # Options: "google", "openai", "sentence-transformers", "huggingface"
+    embedding_model: str = "all-mpnet-base-v2"  # Model name for sentence-transformers/huggingface
+    
     # Persistence settings
     persistence_enabled: bool = True
     snapshot_interval: int = 300  # 5 minutes
@@ -187,13 +191,17 @@ class CacheConfig:
     @classmethod
     def from_env(cls) -> 'CacheConfig':
         """Create configuration from environment variables."""
-        return cls(
+        config = cls(
             memory_limit=os.getenv('CACHE_MEMORY_LIMIT', '25%'),
             ttl_enabled=os.getenv('CACHE_TTL_ENABLED', 'true').lower() == 'true',
             eviction_policy=os.getenv('CACHE_EVICTION_POLICY', 'lru'),
             similarity_threshold=float(os.getenv('CACHE_SIMILARITY_THRESHOLD', '0.85')),
             persistence_enabled=os.getenv('CACHE_PERSISTENCE_ENABLED', 'true').lower() == 'true'
         )
+        # Set embedding provider from environment
+        config.embedding_provider = os.getenv('EMBEDDING_PROVIDER', 'sentence-transformers')
+        config.embedding_model = os.getenv('EMBEDDING_MODEL', 'all-mpnet-base-v2')
+        return config
     
     def __str__(self) -> str:
         """String representation of configuration."""

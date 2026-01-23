@@ -1,0 +1,2938 @@
+✓ ANTHROPIC_API_KEY configured
+✓ GOOGLE_API_KEY configured (for embeddings)
+API keys configured successfully
+================================================================================
+CACHE SIZE OPTIMIZATION TEST
+================================================================================
+Testing 3 cache sizes with 200 query pairs
+Cache sizes: [50, 100, 200] (['25%', '50%', '100%'])
+================================================================================
+
+================================================================================
+TEST 1/3: Cache Size = 50 entries
+================================================================================
+============================================================
+CACHE PERFORMANCE BENCHMARK
+============================================================
+
+Loading 200 question pairs from Quora dataset...
+   - 100 duplicate pairs
+   - 100 non-duplicate pairs
+   - Total: 200 pairs
+   - Similarity threshold: 0.75
+Storage engine initialized with 25% memory limit
+TTL Manager initialized with 60s cleanup interval
+Eviction Policy initialized: lru with 10 batch size
+Max entries: 50, Eviction threshold: 0.8
+Thread Safety initialized: max_readers=4, timeout=30s
+Pre-loaded all-mpnet-base-v2 (768-dim) for sentence-transformers
+Similarity Engine initialized with FAISS (threshold: 0.75)
+Persistence Manager initialized
+   📁 Snapshot dir: cache_persistence/snapshots
+   📁 Log dir: cache_persistence/logs
+Advanced Monitoring initialized
+Cache Warming system initialized
+Adaptive Invalidation System initialized
+Adaptive invalidation monitoring started
+TTL cleanup thread started (interval: 60s)
+Eviction monitoring thread started
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Advanced monitoring started (interval: 30s)
+🔥 Running warming strategy: popular_content
+🔥 Running warming strategy: frequent_queries
+🔥 Running warming strategy: semantic_clusters
+Cache warming started
+Background processes started
+Cache initialized with 25% memory limit
+   Cache size: 50 entries (max)
+
+Initializing RAG pipeline with Claude...
+   Using Claude Haiku (faster/cheaper) for benchmarking
+✓ ANTHROPIC_API_KEY configured
+✓ GOOGLE_API_KEY configured (for embeddings)
+API keys configured successfully
+Using Claude Haiku (faster/cheaper) for benchmarking
+Using HuggingFace sentence-transformers (local embeddings, no API key needed)
+Using HuggingFace embeddings (all-mpnet-base-v2)
+langchain_hub not available, using local prompt template
+Real RAG pipeline initialized with Claude (Anthropic)
+Testing RAG pipeline with sample question...
+RAG pipeline test successful
+   Sample answer: Based on the provided context, machine learning is a subset of artificial intelligence that enables ...
+Real RAG pipeline initialized with Claude Haiku
+
+Phase 1: Caching 200 questions with real RAG...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of the best history podcasts?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Do parents really love all their kids equally?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the procedure for an Indian student to get ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I improve my coding skills (python)?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the problem with controlled fusion?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the newest or best gadgets, tools, techni...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it possible that Donald Trump has a mental prob...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How long does the USPS first class shipping take f...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best material for understanding algori...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your favorite sports car?...
+   [10/200] LLM calls: 10 | Elapsed: 23.2s | ETA: 441s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the best way to copy music from my iPhone b...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where can I find a European family office database...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I make money through the Internet?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I increase my height after 21 also?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do offshore platforms handle groceries and sma...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it wrong for me to be content with my life?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best gaming laptop under 40k?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it wise to move in with your boyfriend of 6 mon...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do electrons repel each other?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can Jio work in a 3G phone?...
+   [20/200] LLM calls: 20 | Elapsed: 45.1s | ETA: 406s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How is the Mass communication department at Ashoka...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the cutest animals?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your experience with Reliance Jio?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best Carrier air conditioner service ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can mathematics prove the existence or non-existen...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Who are good attorneys in New York that work with ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of the most misheard song lyrics of ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How should I start IAS preparation after graduatio...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Who's your father?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I be more Jewish religiously and culturall...
+   [30/200] LLM calls: 30 | Elapsed: 66.4s | ETA: 376s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I deal with depression and low self-esteem...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What can I do to get a job at Microsoft?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best phone to buy under Rs.1500?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What do people think about Muslims?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I have done BE in IT. Which course is beneficial-S...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it good to use Dettol liquid in bathing water?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did the Korean war happen?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I have an intracluster correlation matrix, symmetr...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is a suitable inpatient drug and alcohol reh...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I build a self confidence?...
+   [40/200] LLM calls: 40 | Elapsed: 96.9s | ETA: 388s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How I become a good teacher?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I study a lot?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can we stop global warming?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your favourite anime character and why?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What systems software can run domestic debit card ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Some of the biggest mistake in life?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How many names had Arjun?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What prevented Harry Potter from becoming an Obscu...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is shoethere.com a legitimate website?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can changing 500 and 1000 rupee notes end the ...
+   [50/200] LLM calls: 50 | Elapsed: 118.5s | ETA: 355s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Was Dhoni's decision to give up captaincy good for...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: When will the BJP government strip all the Muslims...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How does packet switched network differs from circ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Can we charge laptops via USB with a power bank?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What kind of bird is this please?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which business is good start up in Hyderabad?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are some of your own personal Moon in the 3rd...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the difference between infrared radiation ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I register institute providing training in ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why do some answers collapse in Quora?...
+   [60/200] LLM calls: 60 | Elapsed: 140.5s | ETA: 328s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Where Can I find the best seo company?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: If Japan outlawed inflation, would that get it out...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is a poll tax?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I hack a Gmail account of an unknown person...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I overcome the procrastination?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why do guys fall in love more easily than girls bu...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How comfortably can I live in Washington DC on a $...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do you say 1<x<2?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I stop caring about what people think about...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What's the best way to sell a software product/ser...
+   [70/200] LLM calls: 70 | Elapsed: 161.6s | ETA: 300s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I speak English more fluently?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I use Omegle on my iPod Touch and how is i...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the signs that a guy has feelings for you...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How would I develop an e-commerce website?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the best horror novel in 2016?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the things that make Entrepreneurs sad?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What year did the letter J come?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I use my gift for explaining things to oth...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are some interesting sites on the deep web?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is your review of Lyf mobiles?...
+   [80/200] LLM calls: 80 | Elapsed: 185.1s | ETA: 278s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why has apple stopped innovating?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the basic purpose of nuclear bomb?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are disaccharides? What are examples of disac...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Have dogfights like those in Top Gun ever occurred...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is it safe to lose 25 pounds in 1 month?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why can't we just block the import of Chinese good...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is 7 days too late for rabies vaccine after a poss...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What phone do you use right now?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Rastriya military school blore?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which is the best institute to learn digital marke...
+   [90/200] LLM calls: 90 | Elapsed: 204.8s | ETA: 250s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why did you have children?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the greatest quotes from the Mahabharata ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What type of government does Guatemala have? How d...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What do you mean by an introvert?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why did people think that Donald Trump will be a g...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I prepare for UPSC?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Can Congress stop Presidents from starting a major...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I become more fluent in Chinese?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the best thing about having an elder broth...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the function of Enhance XL Male Enhancemen...
+   [100/200] LLM calls: 100 | Elapsed: 226.2s | ETA: 226s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I hack a WhatsApp account?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: I am 19 years old girl and my height is 5'3. How c...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Can anybodt tell cost of installation for Automati...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is it safe During pregnent sex?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: I want to Start (PET) Polyethylene terephthalate R...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are your 2017 New Year’s resolution(s)?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do you get a job at an embassy or consulate?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the best workflow process from web design ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Are foxes more closely related to dogs or cats?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are some things new employees should know goi...
+   [110/200] LLM calls: 110 | Elapsed: 248.1s | ETA: 203s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Does cognition affect perception?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How should I earn money online working from home?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How should mid-distance track runners incorporate ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: My ex-girlfriend is suffering from malaria. I have...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What TV series do you watch and why?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What do you think about my short film, "ColorShift...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the Hizmet movement?...
+[INFO] ALERT [INFO] optimization: Generated 1 optimization recommendations
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is having a dry throat related to diabetes?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is it right to tell a girl the you have feelings f...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why is Hillary Clinton a better choice than Donald...
+   [120/200] LLM calls: 120 | Elapsed: 271.1s | ETA: 181s
+Using cached embedding for: How can changing 500 and 1000 ...
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can changing 500 and 1000 rupee notes end the ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can I continue using Uber if I change countrie...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Do inkjet printers use color ink when printing bla...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which is more financially beneficial: being in a f...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How can can I delete my yahoo email account?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What can India do in Syria?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is it possible for someone to become a full-time w...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Will Thursday Night Football increase ratings for ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the best Smartphones tech gadgets?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which can be the best laptop under 30000?...
+   [130/200] LLM calls: 130 | Elapsed: 294.5s | ETA: 159s
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Can I ask the HR if I can re-apply for the same po...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I reduce my belly fat easily?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the minimum GPA and GRE requirements of F...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is there a astronomical model that would generate ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is operation quality?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What does it mean to hike up your skirt?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How does hypnosis work or may help?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What does Tiresias tell Odysseus? Why is this impo...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I can stop hairfall?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Difference between wraparound and projector headli...
+   [140/200] LLM calls: 140 | Elapsed: 314.7s | ETA: 135s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is there an archive app that lets you search the t...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What I can do to be effective students in universi...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Where can I buy meldonium in Canada?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What existed before space and time?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the weirdest dream you've had?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What's the funniest highbrow joke you've ever hear...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What should you do if a cat scratches your eye?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is a suitable solar panel installation provid...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the benefits of learning another language...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which PSUs visit IIM campus for placements?...
+   [150/200] LLM calls: 150 | Elapsed: 338.7s | ETA: 113s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which programming language is in demand in Austral...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: I work on volume reconstruction in electron micros...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are some popular method to do suicide?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How will work and jobs change over the next 10-20 ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the pros and cons of the German Shepherd ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which are the best universities in the USA for doi...
+🔥 Running warming strategy: popular_content
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What should I do for Web design?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Do the eyes of Kamakshi move in Kanchipuram?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What should I do to improve my English ?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do you compare and contrast acids and bases?...
+   [160/200] LLM calls: 160 | Elapsed: 361.5s | ETA: 90s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: I am planning to join CTS (Cognizant), USA and hea...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why should I crack Jee?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the best associate product manager (APM) ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Miracle: If any, what is the scientific mystery be...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the best food in Pune and where do I get i...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the main difference between socialism and ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the difference between i3 and Pentium Quad...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I download free music?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do payroll companies make money?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How should I start learning Python?...
+   [170/200] LLM calls: 170 | Elapsed: 385.5s | ETA: 68s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How many months does it take to gain knowledge in ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Which are the movies with incest themes?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why has not any Indian Mathematician won a Fields ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What would cause an AMP to cut out?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is the true meaning of freedom according to y...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Where can I watch in English dub boruto Naruto the...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is a profitable way to trade binary options?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why are some of my questions being marked as "Need...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Why does Donald Trump have orange skin?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: I am a third year MBBS student and I have not gain...
+   [180/200] LLM calls: 180 | Elapsed: 411.3s | ETA: 46s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Is there an end to the universe, and if not, is th...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What happens when you die in a dream?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are sac fungi? What are some examples?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Whose questions do you follow the most on a regula...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Can I start skill assessment from ACS before compl...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What can you do if your wife is cheating?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Can you suggest a best budget phone below 15k?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the best mobile app development companies...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is spring features?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: Does having bad teeth kill someone faster?...
+   [190/200] LLM calls: 190 | Elapsed: 433.0s | ETA: 23s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What topic should I research for my EPQ project?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How does a new website protect its design and user...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What should I do when my friends betray me?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What would World War III look like?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What happened to the Flight MH370?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What are the main imports and exports of Venezuela...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do you find out if a girl has a boyfriend?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What happened before the Big Bang happened?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: What is it like to own and drive a Nissan GT-R?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 49 entries (max: 50)
+RAG result cached for query: How do I fall in love with books again?...
+   [200/200] LLM calls: 200 | Elapsed: 456.1s | ETA: 0s
+   Cached 200 questions in 456.1s
+   Total LLM calls made: 200
+   Cache stats: 49 entries, 151 evictions
+
+Cleaning up Phase 1 resources...
+   Cleanup complete
+
+Phase 2: Testing queries and measuring REAL metrics...
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are some of the best hist...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Do parents really love all the...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What's the procedure for an In...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I improve my coding sk...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Is it possible that Donald Tru...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the best material for ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is your favorite sports c...'
+   [10/200] Hits: 0 | Misses: 10 | LLM calls: 10 | ETA: 502s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What's the best way to copy mu...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I make money through t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I increase my height a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is the best gaming lapto...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why do electrons repel each ot...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can Jio work in a 3G phone...'
+   [20/200] Hits: 0 | Misses: 20 | LLM calls: 20 | ETA: 434s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are the cutest animals?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is your experience with R...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is the best Carrier air ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Can mathematics prove the exis...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Who are good attorneys in New ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are some of the most mish...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How should I start IAS prepara...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [30/200] Hits: 0 | Misses: 30 | LLM calls: 30 | ETA: 403s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I deal with depression...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is the best phone to buy...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What do people think about Mus...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why did the Korean war happen?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is a suitable inpatient ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I build a self confiden...'
+   [40/200] Hits: 0 | Misses: 40 | LLM calls: 40 | ETA: 383s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How I become a good teacher?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I study a lot?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Can we stop global warming?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is your favourite anime c...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How many names had Arjun?...'
+[INFO] ALERT [INFO] optimization: Generated 1 optimization recommendations
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What prevented Harry Potter fr...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [50/200] Hits: 0 | Misses: 50 | LLM calls: 50 | ETA: 353s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How does packet switched netwo...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which business is good start u...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the difference between...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why do some answers collapse i...'
+   [60/200] Hits: 0 | Misses: 60 | LLM calls: 60 | ETA: 323s
+Created sentence-transformer embedding (dim: 768)
+🔥 Running warming strategy: frequent_queries
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'If Japan outlawed inflation, w...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is a poll tax?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I hack a Gmail account ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I overcome the procras...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How comfortably can I live in ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I stop caring about wha...'
+Created sentence-transformer embedding (dim: 768)
+   [70/200] Hits: 0 | Misses: 70 | LLM calls: 70 | ETA: 295s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I speak English more f...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I use Omegle on my iPo...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How would I develop an e-comme...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What year did the letter J com...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [80/200] Hits: 0 | Misses: 80 | LLM calls: 80 | ETA: 274s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why has apple stopped innovati...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the basic purpose of n...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are disaccharides? What a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Is it safe to lose 25 pounds i...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why can't we just block the im...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What phone do you use right no...'
+🔥 Running warming strategy: popular_content
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [90/200] Hits: 0 | Misses: 90 | LLM calls: 90 | ETA: 254s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why did you have children?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What type of government does G...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What do you mean by an introve...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I prepare for UPSC?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I become more fluent i...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the best thing about h...'
+Created sentence-transformer embedding (dim: 768)
+   [100/200] Hits: 0 | Misses: 100 | LLM calls: 100 | ETA: 230s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I hack a WhatsApp acco...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I increase my height a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are your 2017 New Year’s ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do you get a job at an emb...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the best workflow proc...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are some things new emplo...'
+   [110/200] Hits: 0 | Misses: 110 | LLM calls: 110 | ETA: 205s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How should I earn money online...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What TV series do you watch an...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What do you think about my sho...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Is having a dry throat related...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why is Hillary Clinton a bette...'
+   [120/200] Hits: 0 | Misses: 120 | LLM calls: 120 | ETA: 181s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can changing 500 and 1000 ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can can I delete my yahoo ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What can India do in Syria?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which can be the best laptop u...'
+   [130/200] Hits: 0 | Misses: 130 | LLM calls: 130 | ETA: 158s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I reduce my belly fat e...'
+Using cached embedding for: What are the minimum GPA and  ...
+Semantic match found but no cached value for 'What are the minimum GPA and G...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Is there a astronomical model ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is operation quality?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How does hypnosis work or may ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I can stop hairfall?...'
+Created sentence-transformer embedding (dim: 768)
+   [140/200] Hits: 0 | Misses: 140 | LLM calls: 140 | ETA: 137s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Where can I buy meldonium in C...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What existed before space and ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the weirdest dream you...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What should you do if a cat sc...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is a suitable solar panel...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are the benefits of learn...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which PSUs visit IIM campus fo...'
+   [150/200] Hits: 0 | Misses: 150 | LLM calls: 150 | ETA: 114s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which programming language is ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.772 similarity for 'What are some popular method t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.999 similarity for 'How will work and jobs change ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.913 similarity for 'What are the pros and cons of ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.918 similarity for 'Which are the best universitie...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 3.2%
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'What should I do to improve my...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.938 similarity for 'How do you compare and contras...'
+   [160/200] Hits: 6 | Misses: 154 | LLM calls: 154 | ETA: 88s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.963 similarity for 'What is the best food in Pune ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.784 similarity for 'How do I download free music?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.998 similarity for 'How should I start learning Py...'
+   [170/200] Hits: 9 | Misses: 161 | LLM calls: 161 | ETA: 65s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.945 similarity for 'How many months does it take t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.858 similarity for 'Which are the movies with ince...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.860 similarity for 'Why has not any Indian Mathema...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.963 similarity for 'What would cause an AMP to cut...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.883 similarity for 'What is the true meaning of fr...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.826 similarity for 'Why are some of my questions b...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [180/200] Hits: 15 | Misses: 165 | LLM calls: 165 | ETA: 42s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.962 similarity for 'Is there an end to the univers...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.987 similarity for 'What happens when you die in a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 11.1%
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.943 similarity for 'Can you suggest a best budget ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.771 similarity for 'What is spring features?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.807 similarity for 'Does having bad teeth kill som...'
+   [190/200] Hits: 20 | Misses: 170 | LLM calls: 170 | ETA: 20s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.801 similarity for 'What should I do when my frien...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.925 similarity for 'What happened to the Flight MH...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.937 similarity for 'What are the main imports and ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.880 similarity for 'How do you find out if a girl ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'What happened before the Big B...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [200/200] Hits: 25 | Misses: 175 | LLM calls: 175 | ETA: 0s
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+1. Cache Hit Rate: 12.5% (Target: 60-75%)
+   Below target
+
+2. API Call Reduction: 12.5% (Target: ≥40%)
+   - Total LLM calls made: 375
+   - LLM calls avoided (cache hits): 25
+   - Avoided 25 API calls out of 200 queries
+   Below target
+
+3. Latency Improvement:
+   - Cache Hit: 36.1ms
+   - Cache Miss: 2269.9ms
+   - Speedup: 62.9× (Target: 10-30×)
+   ACHIEVED
+
+4. Similarity Threshold: 0.75
+   (Duplicate Hit Rate: 23.0%)
+
+5. Dataset Size: 200 queries
+   Test Duration: 398.2s
+
+6. Cache Performance:
+   Cache Size: 50 entries (max)
+   Final Entries: 49 entries
+   Total Evictions: 151
+   Eviction Rate: 40.3%
+
+============================================================
+CONFUSION MATRIX (Complete Picture)
+============================================================
+True Positives (TP):   23 - Duplicates that hit cache
+False Negatives (FN):  77 - Duplicates that missed
+False Positives (FP):    2 - Non-duplicates that hit
+True Negatives (TN):    98 - Non-duplicates that missed
+
+Total Duplicates:     100
+Total Non-Duplicates:  100
+
+============================================================
+CLASSIFICATION METRICS
+============================================================
+Precision: 92.0% (Of 25 cache hits, 23 were correct duplicates)
+Recall:    23.0% (Of 100 duplicates, caught 23)
+Accuracy:  60.5% (Overall correctness)
+F1 Score:  0.368 (Harmonic mean of precision & recall)
+False Positive Rate: 2.0% (Non-duplicates incorrectly cached)
+============================================================
+
+Results saved to: results/benchmark_metrics.json
+
+Some metrics need improvement
+Shutting down cache system...
+TTL cleanup thread stopped
+Eviction monitoring thread stopped
+Advanced monitoring stopped
+Cache warming stopped
+Cache system shutdown complete
+
+================================================================================
+TEST 2/3: Cache Size = 100 entries
+================================================================================
+============================================================
+CACHE PERFORMANCE BENCHMARK
+============================================================
+
+Loading 200 question pairs from Quora dataset...
+   - 100 duplicate pairs
+   - 100 non-duplicate pairs
+   - Total: 200 pairs
+   - Similarity threshold: 0.75
+Storage engine initialized with 25% memory limit
+TTL Manager initialized with 60s cleanup interval
+Eviction Policy initialized: lru with 10 batch size
+Max entries: 100, Eviction threshold: 0.8
+Thread Safety initialized: max_readers=4, timeout=30s
+Pre-loaded all-mpnet-base-v2 (768-dim) for sentence-transformers
+Similarity Engine initialized with FAISS (threshold: 0.75)
+Persistence Manager initialized
+   📁 Snapshot dir: cache_persistence/snapshots
+   📁 Log dir: cache_persistence/logs
+Advanced Monitoring initialized
+Cache Warming system initialized
+Adaptive Invalidation System initialized
+Adaptive invalidation monitoring started
+TTL cleanup thread started (interval: 60s)
+Eviction monitoring thread started
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Advanced monitoring started (interval: 30s)
+🔥 Running warming strategy: popular_content
+🔥 Running warming strategy: frequent_queries
+🔥 Running warming strategy: semantic_clusters
+Cache warming started
+Background processes started
+Cache initialized with 25% memory limit
+   Cache size: 100 entries (max)
+
+Initializing RAG pipeline with Claude...
+   Using Claude Haiku (faster/cheaper) for benchmarking
+✓ ANTHROPIC_API_KEY configured
+✓ GOOGLE_API_KEY configured (for embeddings)
+API keys configured successfully
+Using Claude Haiku (faster/cheaper) for benchmarking
+Using HuggingFace sentence-transformers (local embeddings, no API key needed)
+Using HuggingFace embeddings (all-mpnet-base-v2)
+langchain_hub not available, using local prompt template
+Real RAG pipeline initialized with Claude (Anthropic)
+Testing RAG pipeline with sample question...
+RAG pipeline test successful
+   Sample answer: Based on the provided context, machine learning is a subset of artificial intelligence that enables ...
+Real RAG pipeline initialized with Claude Haiku
+
+Phase 1: Caching 200 questions with real RAG...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of the best history podcasts?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Do parents really love all their kids equally?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the procedure for an Indian student to get ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I improve my coding skills (python)?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the problem with controlled fusion?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the newest or best gadgets, tools, techni...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it possible that Donald Trump has a mental prob...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How long does the USPS first class shipping take f...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best material for understanding algori...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your favorite sports car?...
+   [10/200] LLM calls: 10 | Elapsed: 23.3s | ETA: 442s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the best way to copy music from my iPhone b...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where can I find a European family office database...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I make money through the Internet?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I increase my height after 21 also?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do offshore platforms handle groceries and sma...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it wrong for me to be content with my life?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best gaming laptop under 40k?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it wise to move in with your boyfriend of 6 mon...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do electrons repel each other?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can Jio work in a 3G phone?...
+   [20/200] LLM calls: 20 | Elapsed: 45.4s | ETA: 409s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How is the Mass communication department at Ashoka...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the cutest animals?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your experience with Reliance Jio?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best Carrier air conditioner service ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can mathematics prove the existence or non-existen...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Who are good attorneys in New York that work with ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of the most misheard song lyrics of ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How should I start IAS preparation after graduatio...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Who's your father?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I be more Jewish religiously and culturall...
+   [30/200] LLM calls: 30 | Elapsed: 67.8s | ETA: 384s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I deal with depression and low self-esteem...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What can I do to get a job at Microsoft?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best phone to buy under Rs.1500?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What do people think about Muslims?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I have done BE in IT. Which course is beneficial-S...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it good to use Dettol liquid in bathing water?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did the Korean war happen?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I have an intracluster correlation matrix, symmetr...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is a suitable inpatient drug and alcohol reh...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I build a self confidence?...
+   [40/200] LLM calls: 40 | Elapsed: 97.2s | ETA: 389s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How I become a good teacher?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I study a lot?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can we stop global warming?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your favourite anime character and why?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What systems software can run domestic debit card ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Some of the biggest mistake in life?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How many names had Arjun?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What prevented Harry Potter from becoming an Obscu...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is shoethere.com a legitimate website?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can changing 500 and 1000 rupee notes end the ...
+   [50/200] LLM calls: 50 | Elapsed: 119.6s | ETA: 359s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Was Dhoni's decision to give up captaincy good for...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: When will the BJP government strip all the Muslims...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How does packet switched network differs from circ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can we charge laptops via USB with a power bank?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What kind of bird is this please?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which business is good start up in Hyderabad?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of your own personal Moon in the 3rd...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the difference between infrared radiation ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I register institute providing training in ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do some answers collapse in Quora?...
+   [60/200] LLM calls: 60 | Elapsed: 142.2s | ETA: 332s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where Can I find the best seo company?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: If Japan outlawed inflation, would that get it out...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is a poll tax?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I hack a Gmail account of an unknown person...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I overcome the procrastination?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do guys fall in love more easily than girls bu...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How comfortably can I live in Washington DC on a $...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do you say 1<x<2?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I stop caring about what people think about...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the best way to sell a software product/ser...
+   [70/200] LLM calls: 70 | Elapsed: 163.9s | ETA: 304s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I speak English more fluently?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I use Omegle on my iPod Touch and how is i...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the signs that a guy has feelings for you...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How would I develop an e-commerce website?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the best horror novel in 2016?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the things that make Entrepreneurs sad?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What year did the letter J come?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I use my gift for explaining things to oth...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some interesting sites on the deep web?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your review of Lyf mobiles?...
+   [80/200] LLM calls: 80 | Elapsed: 187.7s | ETA: 282s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why has apple stopped innovating?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the basic purpose of nuclear bomb?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are disaccharides? What are examples of disac...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Have dogfights like those in Top Gun ever occurred...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it safe to lose 25 pounds in 1 month?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why can't we just block the import of Chinese good...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is 7 days too late for rabies vaccine after a poss...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What phone do you use right now?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Rastriya military school blore?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best institute to learn digital marke...
+   [90/200] LLM calls: 90 | Elapsed: 208.2s | ETA: 255s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did you have children?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the greatest quotes from the Mahabharata ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What type of government does Guatemala have? How d...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What do you mean by an introvert?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did people think that Donald Trump will be a g...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I prepare for UPSC?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can Congress stop Presidents from starting a major...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I become more fluent in Chinese?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best thing about having an elder broth...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the function of Enhance XL Male Enhancemen...
+   [100/200] LLM calls: 100 | Elapsed: 228.4s | ETA: 228s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How can I hack a WhatsApp account?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: I am 19 years old girl and my height is 5'3. How c...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Can anybodt tell cost of installation for Automati...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is it safe During pregnent sex?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: I want to Start (PET) Polyethylene terephthalate R...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are your 2017 New Year’s resolution(s)?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do you get a job at an embassy or consulate?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the best workflow process from web design ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Are foxes more closely related to dogs or cats?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are some things new employees should know goi...
+   [110/200] LLM calls: 110 | Elapsed: 251.3s | ETA: 206s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Does cognition affect perception?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How should I earn money online working from home?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How should mid-distance track runners incorporate ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: My ex-girlfriend is suffering from malaria. I have...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What TV series do you watch and why?...
+[INFO] ALERT [INFO] optimization: Generated 1 optimization recommendations
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What do you think about my short film, "ColorShift...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the Hizmet movement?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is having a dry throat related to diabetes?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is it right to tell a girl the you have feelings f...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Why is Hillary Clinton a better choice than Donald...
+   [120/200] LLM calls: 120 | Elapsed: 275.7s | ETA: 184s
+Using cached embedding for: How can changing 500 and 1000 ...
+RAG result cached for query: How can changing 500 and 1000 rupee notes end the ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How can I continue using Uber if I change countrie...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Do inkjet printers use color ink when printing bla...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Which is more financially beneficial: being in a f...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How can can I delete my yahoo email account?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What can India do in Syria?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is it possible for someone to become a full-time w...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Will Thursday Night Football increase ratings for ...
+🔥 Running warming strategy: popular_content
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the best Smartphones tech gadgets?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Which can be the best laptop under 30000?...
+   [130/200] LLM calls: 130 | Elapsed: 299.8s | ETA: 161s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Can I ask the HR if I can re-apply for the same po...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do I reduce my belly fat easily?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the minimum GPA and GRE requirements of F...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is there a astronomical model that would generate ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is operation quality?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What does it mean to hike up your skirt?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How does hypnosis work or may help?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What does Tiresias tell Odysseus? Why is this impo...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do I can stop hairfall?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Difference between wraparound and projector headli...
+   [140/200] LLM calls: 140 | Elapsed: 320.9s | ETA: 138s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is there an archive app that lets you search the t...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What I can do to be effective students in universi...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Where can I buy meldonium in Canada?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What existed before space and time?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the weirdest dream you've had?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What's the funniest highbrow joke you've ever hear...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What should you do if a cat scratches your eye?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is a suitable solar panel installation provid...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the benefits of learning another language...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Which PSUs visit IIM campus for placements?...
+   [150/200] LLM calls: 150 | Elapsed: 343.0s | ETA: 114s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Which programming language is in demand in Austral...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: I work on volume reconstruction in electron micros...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are some popular method to do suicide?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How will work and jobs change over the next 10-20 ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the pros and cons of the German Shepherd ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Which are the best universities in the USA for doi...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What should I do for Web design?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Do the eyes of Kamakshi move in Kanchipuram?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What should I do to improve my English ?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do you compare and contrast acids and bases?...
+   [160/200] LLM calls: 160 | Elapsed: 366.6s | ETA: 92s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: I am planning to join CTS (Cognizant), USA and hea...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Why should I crack Jee?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the best associate product manager (APM) ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Miracle: If any, what is the scientific mystery be...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the best food in Pune and where do I get i...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the main difference between socialism and ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the difference between i3 and Pentium Quad...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do I download free music?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do payroll companies make money?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How should I start learning Python?...
+   [170/200] LLM calls: 170 | Elapsed: 392.6s | ETA: 69s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How many months does it take to gain knowledge in ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Which are the movies with incest themes?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Why has not any Indian Mathematician won a Fields ...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What would cause an AMP to cut out?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is the true meaning of freedom according to y...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Where can I watch in English dub boruto Naruto the...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is a profitable way to trade binary options?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Why are some of my questions being marked as "Need...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Why does Donald Trump have orange skin?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: I am a third year MBBS student and I have not gain...
+   [180/200] LLM calls: 180 | Elapsed: 419.6s | ETA: 47s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Is there an end to the universe, and if not, is th...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What happens when you die in a dream?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are sac fungi? What are some examples?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Whose questions do you follow the most on a regula...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Can I start skill assessment from ACS before compl...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What can you do if your wife is cheating?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Can you suggest a best budget phone below 15k?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the best mobile app development companies...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is spring features?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: Does having bad teeth kill someone faster?...
+   [190/200] LLM calls: 190 | Elapsed: 441.0s | ETA: 23s
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What topic should I research for my EPQ project?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How does a new website protect its design and user...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What should I do when my friends betray me?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What would World War III look like?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What happened to the Flight MH370?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What are the main imports and exports of Venezuela...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do you find out if a girl has a boyfriend?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What happened before the Big Bang happened?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: What is it like to own and drive a Nissan GT-R?...
+Created sentence-transformer embedding (dim: 768)
+Evicted 1 entries, cache now has 99 entries (max: 100)
+RAG result cached for query: How do I fall in love with books again?...
+   [200/200] LLM calls: 200 | Elapsed: 463.6s | ETA: 0s
+   Cached 200 questions in 463.6s
+   Total LLM calls made: 200
+   Cache stats: 99 entries, 100 evictions
+
+Cleaning up Phase 1 resources...
+   Cleanup complete
+
+Phase 2: Testing queries and measuring REAL metrics...
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are some of the best hist...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Do parents really love all the...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What's the procedure for an In...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I improve my coding sk...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Is it possible that Donald Tru...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the best material for ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is your favorite sports c...'
+   [10/200] Hits: 0 | Misses: 10 | LLM calls: 10 | ETA: 456s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What's the best way to copy mu...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I make money through t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I increase my height a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is the best gaming lapto...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why do electrons repel each ot...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can Jio work in a 3G phone...'
+   [20/200] Hits: 0 | Misses: 20 | LLM calls: 20 | ETA: 404s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are the cutest animals?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is your experience with R...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is the best Carrier air ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Can mathematics prove the exis...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Who are good attorneys in New ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are some of the most mish...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How should I start IAS prepara...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [30/200] Hits: 0 | Misses: 30 | LLM calls: 30 | ETA: 377s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I deal with depression...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is the best phone to buy...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What do people think about Mus...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why did the Korean war happen?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which is a suitable inpatient ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I build a self confiden...'
+   [40/200] Hits: 0 | Misses: 40 | LLM calls: 40 | ETA: 365s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How I become a good teacher?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I study a lot?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Can we stop global warming?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is your favourite anime c...'
+Created sentence-transformer embedding (dim: 768)
+[INFO] ALERT [INFO] optimization: Generated 1 optimization recommendations
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How many names had Arjun?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What prevented Harry Potter fr...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [50/200] Hits: 0 | Misses: 50 | LLM calls: 50 | ETA: 341s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How does packet switched netwo...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Which business is good start u...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the difference between...'
+Created sentence-transformer embedding (dim: 768)
+🔥 Running warming strategy: popular_content
+🔥 Running warming strategy: frequent_queries
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why do some answers collapse i...'
+   [60/200] Hits: 0 | Misses: 60 | LLM calls: 60 | ETA: 316s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'If Japan outlawed inflation, w...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is a poll tax?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I hack a Gmail account ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I overcome the procras...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How comfortably can I live in ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How do I stop caring about wha...'
+Created sentence-transformer embedding (dim: 768)
+   [70/200] Hits: 0 | Misses: 70 | LLM calls: 70 | ETA: 288s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I speak English more f...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I use Omegle on my iPo...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How would I develop an e-comme...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What year did the letter J com...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [80/200] Hits: 0 | Misses: 80 | LLM calls: 80 | ETA: 264s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why has apple stopped innovati...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the basic purpose of n...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What are disaccharides? What a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Is it safe to lose 25 pounds i...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why can't we just block the im...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What phone do you use right no...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [90/200] Hits: 0 | Misses: 90 | LLM calls: 90 | ETA: 246s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'Why did you have children?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What type of government does G...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What do you mean by an introve...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I prepare for UPSC?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I become more fluent i...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'What is the best thing about h...'
+Created sentence-transformer embedding (dim: 768)
+   [100/200] Hits: 0 | Misses: 100 | LLM calls: 100 | ETA: 224s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I hack a WhatsApp acco...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found but no cached value for 'How can I increase my height a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.823 similarity for 'What are your 2017 New Year’s ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.912 similarity for 'How do you get a job at an emb...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.898 similarity for 'What is the best workflow proc...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.777 similarity for 'What are some things new emplo...'
+   [110/200] Hits: 4 | Misses: 106 | LLM calls: 106 | ETA: 193s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.794 similarity for 'How should I earn money online...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.779 similarity for 'What TV series do you watch an...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.819 similarity for 'What do you think about my sho...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.943 similarity for 'Is having a dry throat related...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.769 similarity for 'Why is Hillary Clinton a bette...'
+   [120/200] Hits: 9 | Misses: 111 | LLM calls: 111 | ETA: 164s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.842 similarity for 'How can changing 500 and 1000 ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.826 similarity for 'How can can I delete my yahoo ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.860 similarity for 'What can India do in Syria?...'
+Created sentence-transformer embedding (dim: 768)
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 11.4%
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.814 similarity for 'Which can be the best laptop u...'
+   [130/200] Hits: 13 | Misses: 117 | LLM calls: 117 | ETA: 139s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.845 similarity for 'How do I reduce my belly fat e...'
+Using cached embedding for: What are the minimum GPA and  ...
+Semantic match found: 1.000 similarity for 'What are the minimum GPA and G...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.789 similarity for 'Is there a astronomical model ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.837 similarity for 'What is operation quality?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.908 similarity for 'How does hypnosis work or may ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.990 similarity for 'How do I can stop hairfall?...'
+Created sentence-transformer embedding (dim: 768)
+   [140/200] Hits: 19 | Misses: 121 | LLM calls: 121 | ETA: 116s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.927 similarity for 'Where can I buy meldonium in C...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.885 similarity for 'What existed before space and ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.978 similarity for 'What is the weirdest dream you...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.864 similarity for 'What should you do if a cat sc...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.878 similarity for 'What is a suitable solar panel...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.947 similarity for 'What are the benefits of learn...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.875 similarity for 'Which PSUs visit IIM campus fo...'
+   [150/200] Hits: 26 | Misses: 124 | LLM calls: 124 | ETA: 92s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.818 similarity for 'Which programming language is ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.772 similarity for 'What are some popular method t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.999 similarity for 'How will work and jobs change ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.913 similarity for 'What are the pros and cons of ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.918 similarity for 'Which are the best universitie...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 22.1%
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'What should I do to improve my...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.938 similarity for 'How do you compare and contras...'
+   [160/200] Hits: 33 | Misses: 127 | LLM calls: 127 | ETA: 71s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.963 similarity for 'What is the best food in Pune ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.784 similarity for 'How do I download free music?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.998 similarity for 'How should I start learning Py...'
+   [170/200] Hits: 36 | Misses: 134 | LLM calls: 134 | ETA: 53s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.945 similarity for 'How many months does it take t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.858 similarity for 'Which are the movies with ince...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.860 similarity for 'Why has not any Indian Mathema...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.963 similarity for 'What would cause an AMP to cut...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.883 similarity for 'What is the true meaning of fr...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.826 similarity for 'Why are some of my questions b...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [180/200] Hits: 42 | Misses: 138 | LLM calls: 138 | ETA: 34s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.962 similarity for 'Is there an end to the univers...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.987 similarity for 'What happens when you die in a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 26.5%
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.943 similarity for 'Can you suggest a best budget ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.771 similarity for 'What is spring features?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.807 similarity for 'Does having bad teeth kill som...'
+   [190/200] Hits: 47 | Misses: 143 | LLM calls: 143 | ETA: 17s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.801 similarity for 'What should I do when my frien...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.925 similarity for 'What happened to the Flight MH...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.937 similarity for 'What are the main imports and ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.880 similarity for 'How do you find out if a girl ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'What happened before the Big B...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [200/200] Hits: 52 | Misses: 148 | LLM calls: 148 | ETA: 0s
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+1. Cache Hit Rate: 26.0% (Target: 60-75%)
+   Below target
+
+2. API Call Reduction: 26.0% (Target: ≥40%)
+   - Total LLM calls made: 348
+   - LLM calls avoided (cache hits): 52
+   - Avoided 52 API calls out of 200 queries
+   Below target
+
+3. Latency Improvement:
+   - Cache Hit: 25.6ms
+   - Cache Miss: 2243.1ms
+   - Speedup: 87.5× (Target: 10-30×)
+   ACHIEVED
+
+4. Similarity Threshold: 0.75
+   (Duplicate Hit Rate: 43.0%)
+
+5. Dataset Size: 200 queries
+   Test Duration: 333.3s
+
+6. Cache Performance:
+   Cache Size: 100 entries (max)
+   Final Entries: 99 entries
+   Total Evictions: 100
+   Eviction Rate: 28.7%
+
+============================================================
+CONFUSION MATRIX (Complete Picture)
+============================================================
+True Positives (TP):   43 - Duplicates that hit cache
+False Negatives (FN):  57 - Duplicates that missed
+False Positives (FP):    9 - Non-duplicates that hit
+True Negatives (TN):    91 - Non-duplicates that missed
+
+Total Duplicates:     100
+Total Non-Duplicates:  100
+
+============================================================
+CLASSIFICATION METRICS
+============================================================
+Precision: 82.7% (Of 52 cache hits, 43 were correct duplicates)
+Recall:    43.0% (Of 100 duplicates, caught 43)
+Accuracy:  67.0% (Overall correctness)
+F1 Score:  0.566 (Harmonic mean of precision & recall)
+False Positive Rate: 9.0% (Non-duplicates incorrectly cached)
+============================================================
+
+Results saved to: results/benchmark_metrics.json
+
+Some metrics need improvement
+Shutting down cache system...
+TTL cleanup thread stopped
+Eviction monitoring thread stopped
+Advanced monitoring stopped
+Cache warming stopped
+Cache system shutdown complete
+
+================================================================================
+TEST 3/3: Cache Size = 200 entries
+================================================================================
+============================================================
+CACHE PERFORMANCE BENCHMARK
+============================================================
+
+Loading 200 question pairs from Quora dataset...
+   - 100 duplicate pairs
+   - 100 non-duplicate pairs
+   - Total: 200 pairs
+   - Similarity threshold: 0.75
+Storage engine initialized with 25% memory limit
+TTL Manager initialized with 60s cleanup interval
+Eviction Policy initialized: lru with 10 batch size
+Max entries: 200, Eviction threshold: 0.8
+Thread Safety initialized: max_readers=4, timeout=30s
+Pre-loaded all-mpnet-base-v2 (768-dim) for sentence-transformers
+Similarity Engine initialized with FAISS (threshold: 0.75)
+Persistence Manager initialized
+   📁 Snapshot dir: cache_persistence/snapshots
+   📁 Log dir: cache_persistence/logs
+Advanced Monitoring initialized
+Cache Warming system initialized
+Adaptive Invalidation System initialized
+Adaptive invalidation monitoring started
+TTL cleanup thread started (interval: 60s)
+Eviction monitoring thread started
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Advanced monitoring started (interval: 30s)
+🔥 Running warming strategy: popular_content
+🔥 Running warming strategy: frequent_queries
+🔥 Running warming strategy: semantic_clusters
+Cache warming started
+Background processes started
+Cache initialized with 25% memory limit
+   Cache size: 200 entries (max)
+
+Initializing RAG pipeline with Claude...
+   Using Claude Haiku (faster/cheaper) for benchmarking
+✓ ANTHROPIC_API_KEY configured
+✓ GOOGLE_API_KEY configured (for embeddings)
+API keys configured successfully
+Using Claude Haiku (faster/cheaper) for benchmarking
+Using HuggingFace sentence-transformers (local embeddings, no API key needed)
+Using HuggingFace embeddings (all-mpnet-base-v2)
+langchain_hub not available, using local prompt template
+Real RAG pipeline initialized with Claude (Anthropic)
+Testing RAG pipeline with sample question...
+RAG pipeline test successful
+   Sample answer: Based on the provided context, machine learning is a subset of artificial intelligence that enables ...
+Real RAG pipeline initialized with Claude Haiku
+
+Phase 1: Caching 200 questions with real RAG...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of the best history podcasts?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Do parents really love all their kids equally?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the procedure for an Indian student to get ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I improve my coding skills (python)?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the problem with controlled fusion?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the newest or best gadgets, tools, techni...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it possible that Donald Trump has a mental prob...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How long does the USPS first class shipping take f...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best material for understanding algori...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your favorite sports car?...
+   [10/200] LLM calls: 10 | Elapsed: 23.9s | ETA: 454s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the best way to copy music from my iPhone b...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where can I find a European family office database...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I make money through the Internet?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I increase my height after 21 also?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do offshore platforms handle groceries and sma...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it wrong for me to be content with my life?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best gaming laptop under 40k?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it wise to move in with your boyfriend of 6 mon...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do electrons repel each other?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can Jio work in a 3G phone?...
+   [20/200] LLM calls: 20 | Elapsed: 45.3s | ETA: 408s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How is the Mass communication department at Ashoka...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the cutest animals?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your experience with Reliance Jio?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best Carrier air conditioner service ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can mathematics prove the existence or non-existen...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Who are good attorneys in New York that work with ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of the most misheard song lyrics of ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How should I start IAS preparation after graduatio...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Who's your father?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I be more Jewish religiously and culturall...
+   [30/200] LLM calls: 30 | Elapsed: 66.7s | ETA: 378s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I deal with depression and low self-esteem...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What can I do to get a job at Microsoft?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best phone to buy under Rs.1500?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What do people think about Muslims?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I have done BE in IT. Which course is beneficial-S...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it good to use Dettol liquid in bathing water?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did the Korean war happen?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I have an intracluster correlation matrix, symmetr...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is a suitable inpatient drug and alcohol reh...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I build a self confidence?...
+   [40/200] LLM calls: 40 | Elapsed: 96.6s | ETA: 386s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How I become a good teacher?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I study a lot?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can we stop global warming?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your favourite anime character and why?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What systems software can run domestic debit card ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Some of the biggest mistake in life?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How many names had Arjun?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What prevented Harry Potter from becoming an Obscu...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is shoethere.com a legitimate website?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can changing 500 and 1000 rupee notes end the ...
+   [50/200] LLM calls: 50 | Elapsed: 117.2s | ETA: 352s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Was Dhoni's decision to give up captaincy good for...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: When will the BJP government strip all the Muslims...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How does packet switched network differs from circ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can we charge laptops via USB with a power bank?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What kind of bird is this please?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which business is good start up in Hyderabad?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some of your own personal Moon in the 3rd...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the difference between infrared radiation ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I register institute providing training in ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do some answers collapse in Quora?...
+   [60/200] LLM calls: 60 | Elapsed: 138.3s | ETA: 323s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where Can I find the best seo company?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: If Japan outlawed inflation, would that get it out...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is a poll tax?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I hack a Gmail account of an unknown person...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I overcome the procrastination?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why do guys fall in love more easily than girls bu...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How comfortably can I live in Washington DC on a $...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do you say 1<x<2?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I stop caring about what people think about...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the best way to sell a software product/ser...
+   [70/200] LLM calls: 70 | Elapsed: 159.3s | ETA: 296s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I speak English more fluently?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I use Omegle on my iPod Touch and how is i...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the signs that a guy has feelings for you...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How would I develop an e-commerce website?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the best horror novel in 2016?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the things that make Entrepreneurs sad?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What year did the letter J come?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I use my gift for explaining things to oth...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some interesting sites on the deep web?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is your review of Lyf mobiles?...
+   [80/200] LLM calls: 80 | Elapsed: 183.7s | ETA: 276s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why has apple stopped innovating?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the basic purpose of nuclear bomb?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are disaccharides? What are examples of disac...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Have dogfights like those in Top Gun ever occurred...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it safe to lose 25 pounds in 1 month?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why can't we just block the import of Chinese good...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is 7 days too late for rabies vaccine after a poss...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What phone do you use right now?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Rastriya military school blore?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is the best institute to learn digital marke...
+   [90/200] LLM calls: 90 | Elapsed: 206.0s | ETA: 252s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did you have children?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the greatest quotes from the Mahabharata ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What type of government does Guatemala have? How d...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What do you mean by an introvert?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why did people think that Donald Trump will be a g...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I prepare for UPSC?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can Congress stop Presidents from starting a major...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I become more fluent in Chinese?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best thing about having an elder broth...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the function of Enhance XL Male Enhancemen...
+   [100/200] LLM calls: 100 | Elapsed: 226.8s | ETA: 227s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I hack a WhatsApp account?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I am 19 years old girl and my height is 5'3. How c...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can anybodt tell cost of installation for Automati...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it safe During pregnent sex?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I want to Start (PET) Polyethylene terephthalate R...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are your 2017 New Year’s resolution(s)?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do you get a job at an embassy or consulate?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best workflow process from web design ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Are foxes more closely related to dogs or cats?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some things new employees should know goi...
+   [110/200] LLM calls: 110 | Elapsed: 249.7s | ETA: 204s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Does cognition affect perception?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How should I earn money online working from home?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How should mid-distance track runners incorporate ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: My ex-girlfriend is suffering from malaria. I have...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What TV series do you watch and why?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What do you think about my short film, "ColorShift...
+[INFO] ALERT [INFO] optimization: Generated 1 optimization recommendations
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the Hizmet movement?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is having a dry throat related to diabetes?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it right to tell a girl the you have feelings f...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why is Hillary Clinton a better choice than Donald...
+   [120/200] LLM calls: 120 | Elapsed: 274.0s | ETA: 183s
+Using cached embedding for: How can changing 500 and 1000 ...
+RAG result cached for query: How can changing 500 and 1000 rupee notes end the ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can I continue using Uber if I change countrie...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Do inkjet printers use color ink when printing bla...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which is more financially beneficial: being in a f...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How can can I delete my yahoo email account?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What can India do in Syria?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is it possible for someone to become a full-time w...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Will Thursday Night Football increase ratings for ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the best Smartphones tech gadgets?...
+🔥 Running warming strategy: popular_content
+[WARNING] ALERT [WARNING] performance: Cache hit rate low: 0.0%
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which can be the best laptop under 30000?...
+   [130/200] LLM calls: 130 | Elapsed: 297.5s | ETA: 160s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can I ask the HR if I can re-apply for the same po...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I reduce my belly fat easily?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the minimum GPA and GRE requirements of F...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is there a astronomical model that would generate ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is operation quality?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What does it mean to hike up your skirt?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How does hypnosis work or may help?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What does Tiresias tell Odysseus? Why is this impo...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I can stop hairfall?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Difference between wraparound and projector headli...
+   [140/200] LLM calls: 140 | Elapsed: 318.3s | ETA: 136s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is there an archive app that lets you search the t...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What I can do to be effective students in universi...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where can I buy meldonium in Canada?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What existed before space and time?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the weirdest dream you've had?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What's the funniest highbrow joke you've ever hear...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What should you do if a cat scratches your eye?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is a suitable solar panel installation provid...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the benefits of learning another language...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which PSUs visit IIM campus for placements?...
+   [150/200] LLM calls: 150 | Elapsed: 342.7s | ETA: 114s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which programming language is in demand in Austral...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I work on volume reconstruction in electron micros...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are some popular method to do suicide?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How will work and jobs change over the next 10-20 ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the pros and cons of the German Shepherd ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which are the best universities in the USA for doi...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What should I do for Web design?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Do the eyes of Kamakshi move in Kanchipuram?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What should I do to improve my English ?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do you compare and contrast acids and bases?...
+   [160/200] LLM calls: 160 | Elapsed: 367.7s | ETA: 92s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I am planning to join CTS (Cognizant), USA and hea...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why should I crack Jee?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the best associate product manager (APM) ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Miracle: If any, what is the scientific mystery be...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the best food in Pune and where do I get i...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the main difference between socialism and ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the difference between i3 and Pentium Quad...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I download free music?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do payroll companies make money?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How should I start learning Python?...
+   [170/200] LLM calls: 170 | Elapsed: 391.3s | ETA: 69s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How many months does it take to gain knowledge in ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Which are the movies with incest themes?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why has not any Indian Mathematician won a Fields ...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What would cause an AMP to cut out?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is the true meaning of freedom according to y...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Where can I watch in English dub boruto Naruto the...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is a profitable way to trade binary options?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why are some of my questions being marked as "Need...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Why does Donald Trump have orange skin?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: I am a third year MBBS student and I have not gain...
+   [180/200] LLM calls: 180 | Elapsed: 418.1s | ETA: 46s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Is there an end to the universe, and if not, is th...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What happens when you die in a dream?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are sac fungi? What are some examples?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Whose questions do you follow the most on a regula...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can I start skill assessment from ACS before compl...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What can you do if your wife is cheating?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Can you suggest a best budget phone below 15k?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the best mobile app development companies...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is spring features?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: Does having bad teeth kill someone faster?...
+   [190/200] LLM calls: 190 | Elapsed: 439.1s | ETA: 23s
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What topic should I research for my EPQ project?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How does a new website protect its design and user...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What should I do when my friends betray me?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What would World War III look like?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What happened to the Flight MH370?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What are the main imports and exports of Venezuela...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do you find out if a girl has a boyfriend?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What happened before the Big Bang happened?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: What is it like to own and drive a Nissan GT-R?...
+Created sentence-transformer embedding (dim: 768)
+RAG result cached for query: How do I fall in love with books again?...
+   [200/200] LLM calls: 200 | Elapsed: 460.4s | ETA: 0s
+   Cached 200 questions in 460.4s
+   Total LLM calls made: 200
+   Cache stats: 199 entries, 0 evictions
+
+Cleaning up Phase 1 resources...
+   Cleanup complete
+
+Phase 2: Testing queries and measuring REAL metrics...
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.856 similarity for 'What are some of the best hist...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.941 similarity for 'Do parents really love all the...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.918 similarity for 'What's the procedure for an In...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.984 similarity for 'How can I improve my coding sk...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.871 similarity for 'Is it possible that Donald Tru...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.768 similarity for 'What is the best material for ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.979 similarity for 'What is your favorite sports c...'
+   [10/200] Hits: 7 | Misses: 3 | LLM calls: 3 | ETA: 124s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.782 similarity for 'What's the best way to copy mu...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.789 similarity for 'How can I make money through t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.803 similarity for 'How can I increase my height a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.962 similarity for 'Which is the best gaming lapto...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.897 similarity for 'Why do electrons repel each ot...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.859 similarity for 'How can Jio work in a 3G phone...'
+   [20/200] Hits: 13 | Misses: 7 | LLM calls: 7 | ETA: 128s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.881 similarity for 'What are the cutest animals?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.849 similarity for 'What is your experience with R...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.987 similarity for 'Which is the best Carrier air ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.961 similarity for 'Can mathematics prove the exis...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.921 similarity for 'Who are good attorneys in New ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.938 similarity for 'What are some of the most mish...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.888 similarity for 'How should I start IAS prepara...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [30/200] Hits: 20 | Misses: 10 | LLM calls: 10 | ETA: 117s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.777 similarity for 'How can I deal with depression...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.926 similarity for 'Which is the best phone to buy...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.900 similarity for 'What do people think about Mus...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.799 similarity for 'Why did the Korean war happen?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.947 similarity for 'Which is a suitable inpatient ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.920 similarity for 'How do I build a self confiden...'
+   [40/200] Hits: 26 | Misses: 14 | LLM calls: 14 | ETA: 124s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.938 similarity for 'How I become a good teacher?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.826 similarity for 'How do I study a lot?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.925 similarity for 'Can we stop global warming?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.995 similarity for 'What is your favourite anime c...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'How many names had Arjun?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.936 similarity for 'What prevented Harry Potter fr...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [50/200] Hits: 32 | Misses: 18 | LLM calls: 18 | ETA: 120s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.994 similarity for 'How does packet switched netwo...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.950 similarity for 'Which business is good start u...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.839 similarity for 'What is the difference between...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.846 similarity for 'Why do some answers collapse i...'
+   [60/200] Hits: 36 | Misses: 24 | LLM calls: 24 | ETA: 124s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.924 similarity for 'If Japan outlawed inflation, w...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.814 similarity for 'What is a poll tax?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.890 similarity for 'How do I hack a Gmail account ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.833 similarity for 'How can I overcome the procras...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.893 similarity for 'How comfortably can I live in ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.976 similarity for 'How do I stop caring about wha...'
+Created sentence-transformer embedding (dim: 768)
+   [70/200] Hits: 42 | Misses: 28 | LLM calls: 28 | ETA: 115s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.845 similarity for 'How can I speak English more f...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.783 similarity for 'How can I use Omegle on my iPo...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.931 similarity for 'How would I develop an e-comme...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.931 similarity for 'What year did the letter J com...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [80/200] Hits: 46 | Misses: 34 | LLM calls: 34 | ETA: 113s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'Why has apple stopped innovati...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.850 similarity for 'What is the basic purpose of n...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.906 similarity for 'What are disaccharides? What a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.782 similarity for 'Is it safe to lose 25 pounds i...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.828 similarity for 'Why can't we just block the im...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.861 similarity for 'What phone do you use right no...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [90/200] Hits: 52 | Misses: 38 | LLM calls: 38 | ETA: 106s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.923 similarity for 'Why did you have children?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.940 similarity for 'What type of government does G...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.915 similarity for 'What do you mean by an introve...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.841 similarity for 'How can I prepare for UPSC?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.979 similarity for 'How can I become more fluent i...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.829 similarity for 'What is the best thing about h...'
+Created sentence-transformer embedding (dim: 768)
+   [100/200] Hits: 58 | Misses: 42 | LLM calls: 42 | ETA: 97s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.961 similarity for 'How can I hack a WhatsApp acco...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.789 similarity for 'How can I increase my height a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.823 similarity for 'What are your 2017 New Year’s ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.912 similarity for 'How do you get a job at an emb...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.898 similarity for 'What is the best workflow proc...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.777 similarity for 'What are some things new emplo...'
+   [110/200] Hits: 64 | Misses: 46 | LLM calls: 46 | ETA: 86s
+Created sentence-transformer embedding (dim: 768)
+[INFO] ALERT [INFO] optimization: Generated 1 optimization recommendations
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.794 similarity for 'How should I earn money online...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.779 similarity for 'What TV series do you watch an...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.819 similarity for 'What do you think about my sho...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.943 similarity for 'Is having a dry throat related...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.769 similarity for 'Why is Hillary Clinton a bette...'
+   [120/200] Hits: 69 | Misses: 51 | LLM calls: 51 | ETA: 77s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.842 similarity for 'How can changing 500 and 1000 ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.826 similarity for 'How can can I delete my yahoo ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.860 similarity for 'What can India do in Syria?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.814 similarity for 'Which can be the best laptop u...'
+   [130/200] Hits: 73 | Misses: 57 | LLM calls: 57 | ETA: 70s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.845 similarity for 'How do I reduce my belly fat e...'
+Using cached embedding for: What are the minimum GPA and  ...
+Semantic match found: 1.000 similarity for 'What are the minimum GPA and G...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.789 similarity for 'Is there a astronomical model ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.837 similarity for 'What is operation quality?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.908 similarity for 'How does hypnosis work or may ...'
+Created sentence-transformer embedding (dim: 768)
+🔥 Running warming strategy: popular_content
+🔥 Running warming strategy: frequent_queries
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.990 similarity for 'How do I can stop hairfall?...'
+Created sentence-transformer embedding (dim: 768)
+   [140/200] Hits: 79 | Misses: 61 | LLM calls: 61 | ETA: 61s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.927 similarity for 'Where can I buy meldonium in C...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.885 similarity for 'What existed before space and ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.978 similarity for 'What is the weirdest dream you...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.864 similarity for 'What should you do if a cat sc...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.878 similarity for 'What is a suitable solar panel...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.947 similarity for 'What are the benefits of learn...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.875 similarity for 'Which PSUs visit IIM campus fo...'
+   [150/200] Hits: 86 | Misses: 64 | LLM calls: 64 | ETA: 51s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.818 similarity for 'Which programming language is ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.772 similarity for 'What are some popular method t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.999 similarity for 'How will work and jobs change ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.913 similarity for 'What are the pros and cons of ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.918 similarity for 'Which are the best universitie...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'What should I do to improve my...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.938 similarity for 'How do you compare and contras...'
+   [160/200] Hits: 93 | Misses: 67 | LLM calls: 67 | ETA: 40s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.963 similarity for 'What is the best food in Pune ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.784 similarity for 'How do I download free music?...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.998 similarity for 'How should I start learning Py...'
+   [170/200] Hits: 96 | Misses: 74 | LLM calls: 74 | ETA: 31s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.945 similarity for 'How many months does it take t...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.858 similarity for 'Which are the movies with ince...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.860 similarity for 'Why has not any Indian Mathema...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.963 similarity for 'What would cause an AMP to cut...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.883 similarity for 'What is the true meaning of fr...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.826 similarity for 'Why are some of my questions b...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [180/200] Hits: 102 | Misses: 78 | LLM calls: 78 | ETA: 20s
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.962 similarity for 'Is there an end to the univers...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.987 similarity for 'What happens when you die in a...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.943 similarity for 'Can you suggest a best budget ...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.771 similarity for 'What is spring features?...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.807 similarity for 'Does having bad teeth kill som...'
+   [190/200] Hits: 107 | Misses: 83 | LLM calls: 83 | ETA: 10s
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.801 similarity for 'What should I do when my frien...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.925 similarity for 'What happened to the Flight MH...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.937 similarity for 'What are the main imports and ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.880 similarity for 'How do you find out if a girl ...'
+Created sentence-transformer embedding (dim: 768)
+Semantic match found: 0.914 similarity for 'What happened before the Big B...'
+Created sentence-transformer embedding (dim: 768)
+Created sentence-transformer embedding (dim: 768)
+   [200/200] Hits: 112 | Misses: 88 | LLM calls: 88 | ETA: 0s
+
+============================================================
+BENCHMARK RESULTS
+============================================================
+1. Cache Hit Rate: 56.0% (Target: 60-75%)
+   Below target
+
+2. API Call Reduction: 56.0% (Target: ≥40%)
+   - Total LLM calls made: 288
+   - LLM calls avoided (cache hits): 112
+   - Avoided 112 API calls out of 200 queries
+   ACHIEVED
+
+3. Latency Improvement:
+   - Cache Hit: 26.1ms
+   - Cache Miss: 2322.1ms
+   - Speedup: 88.8× (Target: 10-30×)
+   ACHIEVED
+
+4. Similarity Threshold: 0.75
+   (Duplicate Hit Rate: 92.0%)
+
+5. Dataset Size: 200 queries
+   Test Duration: 207.3s
+
+6. Cache Performance:
+   Cache Size: 200 entries (max)
+   Final Entries: 199 entries
+   Total Evictions: 0
+   Eviction Rate: 0.0%
+
+============================================================
+CONFUSION MATRIX (Complete Picture)
+============================================================
+True Positives (TP):   92 - Duplicates that hit cache
+False Negatives (FN):   8 - Duplicates that missed
+False Positives (FP):   20 - Non-duplicates that hit
+True Negatives (TN):    80 - Non-duplicates that missed
+
+Total Duplicates:     100
+Total Non-Duplicates:  100
+
+============================================================
+CLASSIFICATION METRICS
+============================================================
+Precision: 82.1% (Of 112 cache hits, 92 were correct duplicates)
+Recall:    92.0% (Of 100 duplicates, caught 92)
+Accuracy:  86.0% (Overall correctness)
+F1 Score:  0.868 (Harmonic mean of precision & recall)
+False Positive Rate: 20.0% (Non-duplicates incorrectly cached)
+============================================================
+
+Results saved to: results/benchmark_metrics.json
+
+Some metrics need improvement
+Shutting down cache system...
+TTL cleanup thread stopped
+Eviction monitoring thread stopped
+Advanced monitoring stopped
+Cache warming stopped
+Cache system shutdown complete
+
+================================================================================
+CACHE SIZE COMPARISON RESULTS
+================================================================================
+
+Cache Size   Hit Rate     API Saved    Evictions    Eviction %   Speedup    Precision    Duration    
+----------------------------------------------------------------------------------------------------
+50           12.5       % 25           151          40.3       % 62.9      × 92.0       % 398.2      s
+100          26.0       % 52           100          28.7       % 87.5      × 82.7       % 333.3      s
+200          56.0       % 112          0            0.0        % 88.8      × 82.1       % 207.3      s
+
+================================================================================
+INSIGHTS
+================================================================================
+
+Best Hit Rate: 56.0% at 200 entries
+Lowest Evictions: 0 at 200 entries
+Best Speedup: 88.8× at 200 entries
+
+Optimal Cache Size: 200 entries
+  - Hit Rate: 56.0%
+  - Evictions: 0 (0.0%)
+  - Memory: ~0.6MB
+
+Full comparison results saved to: results/cache_size_comparison.json
