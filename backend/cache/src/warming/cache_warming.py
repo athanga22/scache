@@ -159,7 +159,7 @@ class CacheWarming:
     def _run_strategy(self, strategy: WarmingStrategy):
         """Run a specific warming strategy."""
         try:
-            print(f"🔥 Running warming strategy: {strategy.name}")
+            print(f"Running warming strategy: {strategy.name}")
             
             if strategy.name == 'popular_content':
                 self._warm_popular_content()
@@ -195,7 +195,7 @@ class CacheWarming:
                 if not self.cache.exists(key):
                     # Try to reload from persistence or external source
                     # This is a placeholder - in real implementation, you'd reload from source
-                    print(f"   🔥 Warming popular item: {key} (accessed {access_count} times)")
+                    print(f"   Warming popular item: {key} (accessed {access_count} times)")
             
             self.stats['popular_items_identified'] = len(popular_items)
             
@@ -216,7 +216,7 @@ class CacheWarming:
                 # Check if we have a cached result for this query
                 if not self.cache.exists(query, "result"):
                     # In a real implementation, you'd pre-compute the result
-                    print(f"   🔥 Warming frequent query: {query[:50]}... (used {frequency} times)")
+                    print(f"   Warming frequent query: {query[:50]}... (used {frequency} times)")
             
         except Exception as e:
             print(f"Error warming frequent queries: {e}")
@@ -229,7 +229,7 @@ class CacheWarming:
             
             # Find queries with high similarity scores
             if similarity_stats.get('embeddings_cached', 0) > 0:
-                print(f"   🔥 Warming semantic clusters: {similarity_stats['embeddings_cached']} embeddings cached")
+                print(f"   Warming semantic clusters: {similarity_stats['embeddings_cached']} embeddings cached")
                 
                 # In a real implementation, you'd identify semantic clusters
                 # and pre-warm related content

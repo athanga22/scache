@@ -66,8 +66,8 @@ class PersistenceManager:
         }
         
         print(f"Persistence Manager initialized")
-        print(f"   📁 Snapshot dir: {self.snapshot_dir}")
-        print(f"   📁 Log dir: {self.log_dir}")
+        print(f"   Snapshot dir: {self.snapshot_dir}")
+        print(f"   Log dir: {self.log_dir}")
     
     def _create_directories(self):
         """Create persistence directories if they don't exist."""
@@ -128,7 +128,7 @@ class PersistenceManager:
                 # Cleanup old snapshots
                 self._cleanup_old_snapshots()
                 
-                print(f"📸 Snapshot created: {snapshot_file.name}")
+                print(f"Snapshot created: {snapshot_file.name}")
                 return True
                 
         except Exception as e:

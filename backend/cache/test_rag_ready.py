@@ -32,25 +32,25 @@ def test_rag_ready():
     # Check API key
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
-        print("❌ ANTHROPIC_API_KEY not set")
+        print("ERROR: ANTHROPIC_API_KEY not set")
         return False
-    print(f"✓ ANTHROPIC_API_KEY configured ({len(api_key)} chars)")
+    print(f"ANTHROPIC_API_KEY configured ({len(api_key)} chars)")
     
     # Initialize RAG pipeline
     print("\nInitializing RAG pipeline...")
     try:
         rag_pipeline = RealRAGPipeline(use_fast_model=True)
     except Exception as e:
-        print(f"❌ Failed to initialize RAG pipeline: {e}")
+        print(f"ERROR: Failed to initialize RAG pipeline: {e}")
         return False
     
     # Check if using mock
     if rag_pipeline.use_mock:
-        print("❌ RAG pipeline is using MOCK mode")
+        print("ERROR: RAG pipeline is using MOCK mode")
         print("   Real API calls will not be made")
         return False
     
-    print("✓ RAG pipeline initialized")
+    print("RAG pipeline initialized")
     
     # Test with a simple question
     print("\nTesting with sample question...")
@@ -63,23 +63,23 @@ def test_rag_ready():
         elapsed = time.time() - start
         
         if not response or "answer" not in response:
-            print("❌ Invalid response format")
+            print("ERROR: Invalid response format")
             return False
         
         answer = response.get("answer", "")
         if "Mock" in answer or len(answer) < 10:
-            print("❌ Received mock or invalid response")
+            print("ERROR: Received mock or invalid response")
             return False
         
-        print(f"✓ RAG response received in {elapsed:.2f}s")
-        print(f"✓ Answer preview: {answer[:100]}...")
-        print(f"\n✅ RAG PIPELINE IS READY!")
+        print(f"RAG response received in {elapsed:.2f}s")
+        print(f"Answer preview: {answer[:100]}...")
+        print(f"\nRAG PIPELINE IS READY")
         print(f"   Model: Claude Haiku")
         print(f"   Response time: {elapsed:.2f}s")
         return True
         
     except Exception as e:
-        print(f"❌ RAG test failed: {e}")
+        print(f"ERROR: RAG test failed: {e}")
         import traceback
         traceback.print_exc()
         return False
